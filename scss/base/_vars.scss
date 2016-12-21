@@ -1,0 +1,27 @@
+$path:'../images/';
+
+$w:1180px;
+
+$colors:(
+        bg:#e8e8e8,
+        bdr:#cbcbcb,
+        h:#468cc8,
+        orange:#eb9b37,
+        font:#565656
+);
+
+@function getc($arg,$c:$colors){
+  $l-i:str-index(inspect($arg),'.');
+
+  @if($l-i==null)
+  {@return map-get($c,$arg);}@else
+  {@return getc(str-slice($arg,$l-i),map-get($c,str-slice($arg,1,$l-i - 2)));}
+}
+
+@function font(){
+  @return 'Open Sans',sans-serif;
+}
+
+@include exports("@path:base\_vars.scss"){/*@path:base\_vars.scss*/
+
+}

@@ -1,0 +1,39 @@
+@include exports("@path:components\_obsolete.scss"){/*@path:components\_obsolete.scss*/
+  #obsolete-notification{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index:5;
+    background:#c9dfe1;
+    font-size:14px;
+    div{
+      position:fixed;
+      left:50%;
+      top:50%;
+      margin:-170px 0 0 -250px;
+      width:500px;
+      p{
+        line-height:18px;
+      }
+      a{
+        display:inline-block;
+        margin-top:20px;
+        height:30px;
+        line-height:30px;
+        padding-left:50px;
+        background:url(../images/browsers.png) no-repeat;
+        &~a{
+          background-position:0 -30px;
+        }
+        &~a~a{
+          background-position:0 -60px;
+        }
+        &~a~a~a{
+          background-position:0 -90px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/form-widget.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="header-wrap">
+            <div class="header">
+                <img class="img" alt=""/>
+                <div class="h"></div>
+                <div class="sub-h"></div>
+            </div>
+        </div>
+        <div class="step1">
+            <label class="item msg">
+                <span class="plh">Введите Ваш вопрос.<br/><br/>Пример: Недавно оказал посредническую услугу как физическое лицо. Но все пошло не так. Я пытался вернуть свои деньги, но меня обвинили в мошенничестве, и теперь грозят подать иск в суд или в прокуратуру. Как мне быть в данной ситуации?</span>
+                <textarea name="sovinformburo_msg"></textarea>
+            </label>
+            <a class="next" href="">Задать вопрос</a>
+        </div>
+        <div class="step2 hidden">
+            <input class="userid" name="sovinformburo_userid" type="hidden" />
+            <input class="way" name="sovinformburo_form" type="hidden" />
+            <div class="do">
+                Введите контактны данные. Наш юрист перезвонит Вам<br/>
+                и ответит напоставленный вопрос
+            </div>
+            <label class="item">
+                <input type="text" name="sovinformburo_name" placeholder="Ваше имя" />
+            </label>
+            <label class="item">
+                <input type="text" name="sovinformburo_phone" value="+7" maxlength="12" />
+            </label>
+            <a class="next" href="">Отправить</a>
+        </div>
+        <div class="sent hidden">
+            Ваша форма отправлена, наши менеджеры свяжутся с вами в ближайщее время
+        </div>
+        <div class="footer">
+            <div class="always">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path class="colorize" d="M9,15.38A6.38,6.38,0,1,0,2.61,9,6.39,6.39,0,0,0,9,15.38ZM9,3.14A5.86,5.86,0,1,1,3.13,9,5.87,5.87,0,0,1,9,3.14Z" transform="translate(-1 -1)"/>
+                    <path class="colorize" d="M14.72,15.75V13.84l-0.44.44a7.47,7.47,0,0,1-8.7,1.37l-0.23.46a8,8,0,0,0,8.86-1v0.7h0.52Z" transform="translate(-1 -1)"/>
+                    <path class="colorize" d="M2.24,14.2v0.52H4.15l-0.44-.44A7.44,7.44,0,0,1,2.32,5.63L1.85,5.4a8,8,0,0,0,1.08,8.8H2.24Z" transform="translate(-1 -1)"/>
+                    <path class="colorize" d="M15.66,12.39l0.46,0.23a8,8,0,0,0-1.07-8.84H16.4V3.26H13.84l0.44,0.45A7.46,7.46,0,0,1,15.66,12.39Z" transform="translate(-1 -1)"/>
+                    <path class="colorize" d="M12.39,2.34l0.23-.46A8,8,0,0,0,3.79,2.94V2.25H3.27V4.15l0.44-.44A7.47,7.47,0,0,1,12.39,2.34Z" transform="translate(-1 -1)"/>
+                    <rect class="colorize" x="7.74" y="2.9" width="0.52" height="0.41"/>
+                    <rect class="colorize" x="12.69" y="7.74" width="0.41" height="0.52"/>
+                    <rect class="colorize" x="7.74" y="12.69" width="0.52" height="0.41"/>
+                    <rect class="colorize" x="2.89" y="7.74" width="0.41" height="0.52"/>
+                    <polygon class="colorize" points="7.74 9.02 8.26 9.02 8.26 8.26 10.65 8.26 10.65 7.74 8.26 7.74 8.26 4.07 7.74 4.07 7.74 7.74 6.98 7.74 6.98 8.26 7.74 8.26 7.74 9.02"/>
+                </svg>
+                24/7
+            </div>
+            <div class="online">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16">
+                    <path class="colorize" d="M12.56,7.79a1.57,1.57,0,1,1-2.22,0A1.57,1.57,0,0,1,12.56,7.79Zm2.22-2.22a0.79,0.79,0,1,0-1.11,1.11,3.13,3.13,0,0,1,0,4.44,0.79,0.79,0,0,0,1.11,1.11A4.7,4.7,0,0,0,14.78,5.57ZM17,3.35A0.79,0.79,0,0,0,15.9,4.46a6.28,6.28,0,0,1,0,8.88A0.79,0.79,0,0,0,17,14.45,7.85,7.85,0,0,0,17,3.35Zm2.22-2.22a0.79,0.79,0,0,0-1.11,1.11,9.42,9.42,0,0,1,0,13.32,0.79,0.79,0,0,0,1.11,1.11A11,11,0,0,0,19.23,1.13Zm-10,4.44a0.79,0.79,0,0,0-1.11,0,4.7,4.7,0,0,0,0,6.66,0.79,0.79,0,1,0,1.11-1.11,3.13,3.13,0,0,1,0-4.44A0.78,0.78,0,0,0,9.23,5.57ZM7,4.46A0.79,0.79,0,1,0,5.89,3.35a7.85,7.85,0,0,0,0,11.1A0.79,0.79,0,0,0,7,13.34,6.28,6.28,0,0,1,7,4.46ZM4.78,2.24A0.79,0.79,0,1,0,3.67,1.13a11,11,0,0,0,0,15.54,0.79,0.79,0,0,0,1.11-1.11A9.42,9.42,0,0,1,4.78,2.24Z" transform="translate(-0.45 -0.9)"/>
+                </svg>
+                ОНЛАЙН
+            </div>
+            <div class="phone">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path class="colorize" d="M4.25,16.93l0.24-.08a2.25,2.25,0,0,0,1.3-1.37l0.57-2.1a2.06,2.06,0,0,0-.47-1.8l-0.76-.76a8.07,8.07,0,0,1,5.68-5.68l0.76,0.76a2.06,2.06,0,0,0,1.8.47l2.1-.57a2.25,2.25,0,0,0,1.37-1.3l0.08-.24a1.91,1.91,0,0,0-.42-1.78L15.37,1.33A2.12,2.12,0,0,0,14.59,1,13.43,13.43,0,0,0,1,14.55a2.11,2.11,0,0,0,.33.82l1.14,1.14A1.91,1.91,0,0,0,4.25,16.93Z" transform="translate(-1 -1)"/>
+                </svg>
+                ПО ТЕЛЕФОНУ
+            </div>
+        </div>
+        <script>
+            var hidden='hidden',
+                    err='error',
+                    loading='loading',
+                    ta=$('textarea'),
+                    inps=$('input[type=text]'),
+                    plh=$('.plh'),
+                    img=$('.img'),
+                    step2=$('.step2'),
+                    data=JSON.parse(decodeURIComponent(location.search.substring(1)));
+
+            //set data from url
+            $('.userid').val(data.userid_);
+            $('.way').val(data.way);
+            if(data.color)
+            {
+                $('.header').css('background',data.color);
+                img.css('border-color',data.color);
+                $('.next').css('background',data.color);
+                $('head').append('<style>.colorize{fill:'+data.color+'}</style>');
+            }
+            img.attr('src',data.photo1);
+            $('.h').text(data.h);
+            $('.sub-h').text(data.subh);
+
+            //set some listeners for interface
+            ta.on('focus',function(){
+                plh.addClass(hidden);
+            }).on('blur',function(){
+                if(!$.trim(ta.val()))
+                    plh.removeClass(hidden);
+            }).add(inps).on('focus',function(){
+             $(this).removeClass(err);
+            });
+
+            //first btn click
+            $('.step1 .next').on('click',function(e){
+                var v=$.trim(ta.val());
+
+                if(v&&v.length>2)
+                {
+                    $('.step1').addClass(hidden);
+                    $('.step2').removeClass(hidden);
+                }else
+                {
+                    ta.addClass(err);
+                }
+
+                e.preventDefault();
+            });
+
+            //send btn click
+            $('.step2 .next').on('click',function(e){
+                var v1=$.trim(inps.eq(0).val()),
+                        v2=$.trim(inps.eq(1).val()),
+                        i1=true,
+                        i2=true,
+                        m_data;
+
+                if(!v1)
+                {
+                    i1=false;
+                    inps.eq(0).addClass(err);
+                }
+                if(!/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(v2))
+                {
+                    i2=false;
+                    inps.eq(1).addClass(err);
+                }
+
+                if(i1&&i2)
+                {
+                    step2.addClass(loading);
+
+                    m_data=$(':input').serializeArray();
+                    m_data.push({name:'sovinformburo_from',value:data.from_});
+                    if(data.tduid_)
+                        m_data.push({name:'sovinformburo_tduid',value:data.tduid_});
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://crm.sov-inform-buro.ru/api/lead',
+                        data: m_data,
+                        dataType: 'json',
+                        success: function(data){
+                            step2.removeClass(loading);
+                            if(data['status'] == "true"){
+                                step2.addClass(hidden);
+                                $('.sent').removeClass(hidden);
+                            } else {
+                                alert('Произошла ошибка при отправке!');
+                            }
+                        },
+                        error:function(){
+                            step2.removeClass(loading);
+                            alert('Проблемы на сервере');
+                        }
+                    });
+                }
+
+                e.preventDefault();
+            });
+        </script>
+    </body>
+</html>
