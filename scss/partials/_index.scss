@@ -19,6 +19,9 @@
     margin-top:6px;
     background:#fff;
     @extend %bxz;
+    @include plh(){
+      color:#b1b1b1;
+    };
     &.error{
       border-color:#f00;
     }
@@ -45,6 +48,16 @@
 .constr-b{
   font-weight:700;
   margin-top:12px;
+  position:relative;
+  &.shift{
+    margin-top:30px;
+  }
+}
+.q{
+  background: url(#{$path}q.png) no-repeat;
+  width:15px;
+  height:15px;
+  @include abs($t:2px,$r:0);
 }
 .constr-block{
   .constr-h1{
@@ -54,6 +67,14 @@
 .constr-type-block{
   display:none;
 }
+.constr-color{
+  @include flx(display,flex);
+  padding-top:4px;
+  div{
+    width:100px;
+    margin-right:16px;
+  }
+}
 .constr-result{
   @include flx(flex,1);
   padding:15px;
@@ -62,7 +83,13 @@
 }
 .constr-frame{
   width:100%;
-  height:470px;
+  height:550px;
+  position:relative;
+}
+.constr-ext{
+  display:block;
+  width:100%;
+  height:100%;
 }
 .constr-out-wrap{
   margin:20px 15px 0 0;
@@ -86,4 +113,25 @@
 .constr-out-details{
   font-weight:400;
   margin-left:30px;
+}
+//---
+.sp-picker-container{
+  width:auto;
+  border:none;
+}
+.sp-replacer{
+  margin-top:4px;
+  padding:0;
+  background:none;
+  border:solid 1px getc(bdr);
+}
+.sp-dd{
+  display:none;
+}
+.sp-preview{
+  border:none;
+  height:30px;
+}
+.sp-input{
+  background:#fff;
 }

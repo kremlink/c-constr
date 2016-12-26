@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="css/form-widget.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/jquery-deparam.js"></script>
     </head>
     <body>
         <div class="header-wrap">
@@ -20,8 +22,7 @@
             <a class="next" href="">Задать вопрос</a>
         </div>
         <div class="step2 hidden">
-            <input class="userid" name="sovinformburo_userid" type="hidden" />
-            <input class="way" name="sovinformburo_form" type="hidden" />
+            <input class="uid" name="sovinformburo_userid" type="hidden" />
             <div class="do">
                 Введите контактны данные. Наш юрист перезвонит Вам<br/>
                 и ответит напоставленный вопрос
@@ -67,107 +68,32 @@
             </div>
         </div>
         <script>
-            var hidden='hidden',
-                    err='error',
-                    loading='loading',
-                    ta=$('textarea'),
-                    inps=$('input[type=text]'),
-                    plh=$('.plh'),
-                    img=$('.img'),
-                    step2=$('.step2'),
-                    data=JSON.parse(decodeURIComponent(location.search.substring(1)));
-
-            //set data from url
-            $('.userid').val(data.userid_);
-            $('.way').val(data.way);
-            if(data.color)
-            {
-                $('.header').css('background',data.color);
-                img.css('border-color',data.color);
-                $('.next').css('background',data.color);
-                $('head').append('<style>.colorize{fill:'+data.color+'}</style>');
-            }
-            img.attr('src',data.photo1);
-            $('.h').text(data.h);
-            $('.sub-h').text(data.subh);
-
-            //set some listeners for interface
-            ta.on('focus',function(){
-                plh.addClass(hidden);
-            }).on('blur',function(){
-                if(!$.trim(ta.val()))
-                    plh.removeClass(hidden);
-            }).add(inps).on('focus',function(){
-             $(this).removeClass(err);
-            });
-
-            //first btn click
-            $('.step1 .next').on('click',function(e){
-                var v=$.trim(ta.val());
-
-                if(v&&v.length>2)
-                {
-                    $('.step1').addClass(hidden);
-                    $('.step2').removeClass(hidden);
-                }else
-                {
-                    ta.addClass(err);
+            var app={
+                cls:{
+                    hidden:'hidden',
+                    err:'error',
+                    loading:'loading'
+                },
+                items:{
+                    hdr:$('.header'),
+                    img:$('.img'),
+                    h:$('.h'),
+                    subH:$('.sub-h'),
+                    uid:$('.uid'),
+                    step1:$('.step1'),
+                    step2:$('.step2'),
+                    next1:$('.step1 .next'),
+                    next2:$('.step2 .next'),
+                    plh:$('.plh'),
+                    ta:$('textarea'),
+                    inps:$('input[type=text]'),
+                    sent:$('.sent')
+                },
+                settings:{
+                    images:'images/'
                 }
-
-                e.preventDefault();
-            });
-
-            //send btn click
-            $('.step2 .next').on('click',function(e){
-                var v1=$.trim(inps.eq(0).val()),
-                        v2=$.trim(inps.eq(1).val()),
-                        i1=true,
-                        i2=true,
-                        m_data;
-
-                if(!v1)
-                {
-                    i1=false;
-                    inps.eq(0).addClass(err);
-                }
-                if(!/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(v2))
-                {
-                    i2=false;
-                    inps.eq(1).addClass(err);
-                }
-
-                if(i1&&i2)
-                {
-                    step2.addClass(loading);
-
-                    m_data=$(':input').serializeArray();
-                    m_data.push({name:'sovinformburo_from',value:data.from_});
-                    if(data.tduid_)
-                        m_data.push({name:'sovinformburo_tduid',value:data.tduid_});
-
-                    $.ajax({
-                        type: 'POST',
-                        url: 'http://crm.sov-inform-buro.ru/api/lead',
-                        data: m_data,
-                        dataType: 'json',
-                        success: function(data){
-                            step2.removeClass(loading);
-                            if(data['status'] == "true"){
-                                step2.addClass(hidden);
-                                $('.sent').removeClass(hidden);
-                            } else {
-                                alert('Произошла ошибка при отправке!');
-                            }
-                        },
-                        error:function(){
-                            step2.removeClass(loading);
-                            alert('Проблемы на сервере');
-                        }
-                    });
-                }
-
-                e.preventDefault();
-            });
+            };
         </script>
+        <script src="js/form-app.js"></script>
     </body>
 </html>

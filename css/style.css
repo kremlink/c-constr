@@ -416,6 +416,13 @@ table {
     border-radius: 4px;
     margin-top: 6px;
     background: #fff; }
+    .constr-choose input::-webkit-input-placeholder, .constr-choose select::-webkit-input-placeholder {
+      color: #b1b1b1; }
+    .constr-choose input::-moz-placeholder, .constr-choose select::-moz-placeholder {
+      color: #b1b1b1;
+      opacity: 1; }
+    .constr-choose input:-ms-input-placeholder, .constr-choose select:-ms-input-placeholder {
+      color: #b1b1b1; }
     .constr-choose input.error, .constr-choose select.error {
       border-color: #f00; }
   .constr-choose option {
@@ -437,13 +444,32 @@ table {
 
 .constr-b {
   font-weight: 700;
-  margin-top: 12px; }
+  margin-top: 12px;
+  position: relative; }
+  .constr-b.shift {
+    margin-top: 30px; }
+
+.q {
+  background: url(../images/q.png) no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 2px;
+  right: 0; }
 
 .constr-block .constr-h1 {
   margin-top: 24px; }
 
 .constr-type-block {
   display: none; }
+
+.constr-color {
+  display: -webkit-flex;
+  display: flex;
+  padding-top: 4px; }
+  .constr-color div {
+    width: 100px;
+    margin-right: 16px; }
 
 .constr-result {
   -webkit-flex: 1;
@@ -454,7 +480,13 @@ table {
 
 .constr-frame {
   width: 100%;
-  height: 470px; }
+  height: 550px;
+  position: relative; }
+
+.constr-ext {
+  display: block;
+  width: 100%;
+  height: 100%; }
 
 .constr-out-wrap {
   margin: 20px 15px 0 0;
@@ -478,5 +510,25 @@ table {
 .constr-out-details {
   font-weight: 400;
   margin-left: 30px; }
+
+.sp-picker-container {
+  width: auto;
+  border: none; }
+
+.sp-replacer {
+  margin-top: 4px;
+  padding: 0;
+  background: none;
+  border: solid 1px #cbcbcb; }
+
+.sp-dd {
+  display: none; }
+
+.sp-preview {
+  border: none;
+  height: 30px; }
+
+.sp-input {
+  background: #fff; }
 
 /*# sourceMappingURL=style.css.map */

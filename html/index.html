@@ -11,50 +11,71 @@
                     <div class="constr-h1">Настройка виджета</div>
                     <div class="constr-b">Тематика — <span class="constr-highlight">Юридические услуги</span></div>
                     <div class="constr-b">URL подключаемого сайта</div>
-                    <input class="constr-url" placeholder="Укажите URL без www и http://" type="text" value="http://google.ru" />
+                    <input data-data='{"for":["chat","form"],"name":"u","valid":"\\S+"}' placeholder="Укажите URL без www и http://" type="text" value="google.ru" />
                     <div class="constr-b">Рекламная форма</div>
                     <select class="constr-type"></select>
-                    <div class="constr-block constr-type-block" data-type="form1">
-                        <div class="constr-b">Выберите способ</div>
-                        <select class="constr-way"></select>
-                    </div>
-                    <div class="constr-b">Цветовое решение</div>
-                    <select class="constr-color"></select>
-                    <div class="constr-block constr-type-block" data-type="form">
+                    <div class="constr-type-block" data-type="chat">
+                        <div class="constr-b">Готовое цветовое решение</div>
+                        <select data-data='{"for":["chat"],"name":"ch-th","alias":"th"}'></select>
                         <div class="constr-h1">Местоположение виджета</div>
                         <div class="constr-b">Позиция</div>
-                        <select class="constr-pos"></select>
+                        <select data-data='{"for":["chat"],"name":"p"}'></select>
                         <div class="constr-b">Отступ от края экрана, px</div>
-                        <input class="constr-shift" type="text" value="0" />
-                        <div class="constr-h1">Содержимое виджета</div>
-                        <div class="constr-b">Имя юриста</div>
-                        <input class="constr-name" type="text" value="Имя юриста" />
-                        <div class="constr-b">Должность</div>
-                        <input class="constr-job" type="text" value="Должность" />
-                        <div class="constr-b">Выбор фотографии</div>
-                        <select class="constr-photo"></select>
+                        <input data-data='{"for":["chat"],"name":"sh","valid":"\\S+"}' type="text" value="0" />
                     </div>
-                    <div class="constr-block constr-type-block" data-type="form1">
+                    <div class="constr-type-block" data-type="form">
+                        <div class="constr-b">Готовое цветовое решение</div>
+                        <select data-data='{"for":["form"],"name":"f-th","alias":"th"}'></select>
+                    </div>
+                    <div class="constr-b">Произвольное цветовое решение</div>
+                    <div class="constr-color">
+                        <div>
+                            Цвет формы
+                            <input data-data='{"for":["chat","form"],"name":"bg-c","color":true}' type="text" value="#bc3c33" />
+                        </div>
+                        <div>
+                            Цвет шрифта
+                            <input data-data='{"for":["chat","form"],"name":"t-c","color":true}' type="text" value="#fff" />
+                        </div>
+                    </div>
+                    <div class="constr-type-block" data-type="form">
                         <div class="constr-b">Размер формы</div>
                         <p class="constr-size">
                             Данная форма автоматически подстраивается под размер блока, в котором она размещается.
                             Так же у Вас есть возможность выставить ее размер вручную.
                         </p>
+                    </div>
+                    <div class="constr-b shift">Счетчик Я. Метрики<a class="q" href=""></a></div>
+                    <input placeholder="27405365" data-data='{"for":["chat","form"],"name":"y-m"}' type="text" />
+                    <div class="constr-b">Счетчик G. Аналитики<a class="q" href=""></a></div>
+                    <input placeholder="UA-78882987-1" data-data='{"for":["chat","form"],"name":"g-a"}' type="text" />
+                    <div class="constr-block constr-type-block" data-type="chat">
+                        <div class="constr-h1">Содержимое виджета</div>
+                        <div class="constr-b">Имя юриста</div>
+                        <input data-data='{"for":["chat"],"name":"n","valid":"\\S+"}' type="text" value="Имя юриста" />
+                        <div class="constr-b">Должность</div>
+                        <input data-data='{"for":["chat"],"name":"j","valid":"\\S+"}' type="text" value="Должность" />
+                        <div class="constr-b">Выбор фотографии</div>
+                        <select data-data='{"for":["chat"],"name":"ch-ph","alias":"ph"}'></select>
+                    </div>
+                    <div class="constr-block constr-type-block" data-type="form">
                         <div class="constr-h1">Содержимое формы</div>
                         <div class="constr-b">Заголовок</div>
-                        <input class="constr-h" type="text" value="Заголовок" />
+                        <input data-data='{"for":["form"],"name":"h","valid":"\\S+"}' type="text" value="Заголовок" />
                         <div class="constr-b">Подзаголовок</div>
-                        <input class="constr-subh" type="text" value="ползаголовок и т.д." />
+                        <input data-data='{"for":["form"],"name":"s-h","valid":"\\S+"}' type="text" value="ползаголовок и т.д." />
                         <div class="constr-b">Выбор фотографии</div>
-                        <select class="constr-photo1"></select>
+                        <select data-data='{"for":["form"],"name":"f-ph","alias":"ph"}'></select>
                     </div>
                 </div>
                 <div class="constr-result">
-                    <iframe class="constr-frame" frameborder="0"></iframe>
+                    <div class="constr-frame">
+                        <iframe class="constr-ext" frameborder="0"></iframe>
+                    </div>
                     <div class="constr-out-wrap">
                         <div class="constr-out-h">
-                            <div class="constr-type-block" data-type="form">Скопируйте код виджета и установите его на свой сайт. После вставки кода виджет моментально приступит к работе.</div>
-                            <div class="constr-type-block" data-type="form1">Код Iframe формы <span class="constr-highlight"></span></div>
+                            <div class="constr-type-block" data-type="chat">Скопируйте код виджета и установите его на свой сайт. После вставки кода виджет моментально приступит к работе.</div>
+                            <div class="constr-type-block" data-type="form">Код Iframe формы <span class="constr-highlight"></span></div>
                         </div>
                         <pre class="constr-out"></pre>
                     </div>
@@ -66,73 +87,43 @@
             var formConstructor={
                 config:{
                     elements:{
-                        url:{
-                            item:'.constr-url',
-                            valid:/\S+/
-                        },
-                        //main "type" select, which defines what widget is chosen
-                        //selElems and inpElems define what selects and inputs are active for that widget
-                        type:{
-                            item:'.constr-type',
-                            options:[
-                                {value:'form',text:'Форма',userid:54321,base:'js/consult-widget.js?',selElems:['position','color','photo'],inpElems:['url','shift','name','job']},
-                                {value:'form1',text:'Форма1',userid:54321,base:'js/form-widget.js?',iframe:'form.html?',selElems:['way','color','photo1'],inpElems:['url','h','subh']}
-                            ]
-                        },
                         //blocks to show depending on what widget is chosen
                         blocks:{
                             items:'.constr-type-block',
                             data:'type'
                         },
-                        //position select data
-                        position:{
-                            item:'.constr-pos',
-                            options:[{value:'pos-lb',text:'Левый нижний угол'},{value:'pos-rb',text:'Правый нижний угол'}]
+                        //main "type" select, which defines what widget is chosen
+                        type:{
+                            item:'.constr-type',
+                            options:[
+                                {value:'form',text:'Форма',uid:54321,base:'js/form-widget.js?'},
+                                {value:'chat',text:'Чат',uid:54321,base:'js/consult-widget.js?'}
+                            ]
                         },
-                        //way select data
-                        way:{
-                            item:'.constr-way',
-                            options:[{value:'iframe',text:'В Iframe'}]
+                        ctrls:{
+                            items:'.constr-choose select:not(.constr-type),.constr-choose input',
+                            data:'data'
                         },
-                        //shift input data
-                        shift:{
-                            item:'.constr-shift',
-                            valid:/^\d+$/
-                        },
-                        //color select data
-                        color:{
-                            item:'.constr-color',
-                            options:[{value:'#F28900',text:'Оранжевое'},{value:'#00f',text:'Синее'}]
-                        },
-                        //name input data
-                        name:{
-                            item:'.constr-name',
-                            valid:/\S+/
-                        },
-                        //job input data
-                        job:{
-                            item:'.constr-job',
-                            valid:/\S+/
-                        },
-                        //h input data
-                        h:{
-                            item:'.constr-h',
-                            valid:/\S+/
-                        },
-                        //subh input data
-                        subh:{
-                            item:'.constr-subh',
-                            valid:/\S+/
-                        },
-                        //photo select data
-                        photo:{
-                            item:'.constr-photo',
-                            options:[{value:'images/photo1.png',text:'Мужчина (1)'},{value:'images/photo2.png',text:'Мужчина (2)'}]
-                        },
-                        //photo select data
-                        photo1:{
-                            item:'.constr-photo1',
-                            options:[{value:'images/f-pers.jpg',text:'Мужчина (1)'},{value:'images/f-pers1.jpg',text:'Мужчина (2)'}]
+                        sels:{
+                            //position select data
+                            p:{
+                                options:[{value:'pos-lb',text:'Левый нижний угол'},{value:'pos-rb',text:'Правый нижний угол'}]
+                            },
+                            //color select data
+                            'ch-th':{
+                                options:[{value:'theme1',text:'Оранжевое'},{value:'theme2',text:'Синее'},{value:'theme3',text:'Зеленое'}]
+                            },
+                            'f-th':{
+                                options:[{value:'theme1',text:'Старое'},{value:'theme2',text:'Новое1'},{value:'theme3',text:'Новое2'},{value:'theme4',text:'Новое3'}]
+                            },
+                            //photo select data
+                            'ch-ph':{
+                                options:[{value:'photo1.png',text:'Мужчина (1)'},{value:'photo2.png',text:'Мужчина (2)'}]
+                            },
+                            //photo select data
+                            'f-ph':{
+                                options:[{value:'f-pers.jpg',text:'Мужчина (1)'},{value:'f-pers1.jpg',text:'Мужчина (2)'}]
+                            }
                         },
                         //frames
                         dest:{
@@ -146,8 +137,7 @@
                     data:{
                         errCls:'error',
                         src:'constr.html',
-                        baseUrl:'http://rustream.ru/static/crm-forms/',
-                        choose:'type'//не изменять
+                        baseUrl:'here/'
                     }
                 }
             };

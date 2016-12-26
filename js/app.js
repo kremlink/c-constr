@@ -5,171 +5,147 @@
 
  var els,data,props;
 
- if(!mgr)
- {
-  mgr={};
- }
+ mgr=mgr||{};
 
  //set some vars for convenience
  els=mgr.config.elements;
  data=mgr.config.data;
- props=mgr.props={};
 
  //set app object
  $.extend(mgr,{
+  props:{},//different $DOM objects excluding controls (selects and inputs)
   index:-1,
   name:null,
   data:{},
-  fullSels:[],
-  fullInps:[],
+  type:$(els.type.item),//type select
+  sels:$(els.ctrls.items).filter('select'),
+  inps:$(els.ctrls.items).filter('input'),
+  inserted:null,
   init:function(){
    //set all used DOM items
-   props.url=$(els.url.item);
-   props.type=$(els.type.item);
+   props=mgr.props;
    props.blocks=$(els.blocks.items);
-   props.position=$(els.position.item);
-   props.way=$(els.way.item);
-   props.shift=$(els.shift.item);
-   props.color=$(els.color.item);
-   props.name=$(els.name.item);
-   props.job=$(els.job.item);
-   props.h=$(els.h.item);
-   props.subh=$(els.subh.item);
-   props.photo=$(els.photo.item);
-   props.photo1=$(els.photo1.item);
+
    props.into=$(els.dest.into);
+   props.ext=$(els.dest.external);
    props.output=$(els.output);
 
-   //fill mgr.fullSels and mgr.fullInps arrays with unique combined values from arrays in options in "type" select
-   els[data.choose].options.forEach(function(o){
-    o.selElems.forEach(function(o1){
-     if(!~mgr.fullSels.indexOf(o1))
-      mgr.fullSels.push(o1);
-    });
-
-    o.inpElems.forEach(function(o1){
-     if(!~mgr.fullInps.indexOf(o1))
-      mgr.fullInps.push(o1);
-    });
+   mgr.inps.filter(function(){
+    return $(this).data(els.ctrls.data).color;
+   }).spectrum({
+    color:this.value,
+    showInput:true,
+    preferredFormat:"hex",
+    change:function(){
+     mgr.setOutput();
+    }
    });
 
-   mgr.setIframe();
    mgr.setSelects();
    mgr.setInputs();
   },
-  //add data into frame and in output block
-  setIframe:function(){
-   props.into.on('load',function(){
-    var script,
-     base=mgr.data[mgr.name]['base_'],
-     iframe=mgr.data[mgr.name]['iframe_'],
-     d,
-     json;
+  //render data
+  render:function(){
+   var script,
+    base=mgr.data[mgr.name]['b_'],
+    d,
+    param;
 
-    d=$.extend({},mgr.data[mgr.name]);
-    delete d.url;
-    json=JSON.stringify(d);
+   d=$.extend({},mgr.data[mgr.name]);
+   delete d['u'];
+   delete d['b_'];
+   param=$.param(d);
 
-    if(iframe!=undefined)
-    {
-     props.into.contents().find('body')
-      .append('<div style="position:fixed;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />')
-      .append('<iframe src="'+iframe+encodeURIComponent(json)+'" style="width:600px;height:440px;display:block;z-index:1;position:absolute;left:50%;top:50%;margin:-220px 0 0 -300px;" frameborder="0"></iframe>');
+   if(mgr.inserted)
+    mgr.inserted.remove();
 
-     props.output.text('<div class="sovinformburo_iframe"></div>\n<script src="'+base+encodeURIComponent(json)+'"></script>');
-    }else
-    {
-     script=props.into.contents()[0].createElement("script");
-     script.type="text/javascript";
-     script.src=base+json;
-     props.into[0].contentWindow.document.body.appendChild(script);
+   if(mgr.name=='chat')
+   {
+    props.output.text('<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
+   }
+   if(mgr.name=='form')
+   {
+    mgr.inserted=$('<div style="position:absolute;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />\
+    <iframe src="'+mgr.data[mgr.name]['bU']+'form.html?'+param+'" style="width:600px;height:440px;display:block;z-index:1;position:absolute;left:50%;top:50%;margin:-220px 0 0 -300px;" frameborder="0"></iframe>').appendTo(props.into);
 
-     props.output.text('<script src="'+base+encodeURIComponent(json)+'"></script>');
-    }
+    props.output.text('<div class="sovinformburo_iframe"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
+   }
 
-    props.into.contents().find(els.dest.external).attr('src',mgr.data[mgr.name]['url']);
-   });
-  },
-  //return array of widget names where "name" is in selElems array
-  getName:function(name){
-   var arr=[];
-
-   els[data.choose].options.forEach(function(o){
-    if(~o.selElems.indexOf(name))
-     arr.push(o.value);
-   });
-
-   return arr;
+   props.ext.attr('src',mgr.data[mgr.name]['u']);
   },
   //set data from selects and their "change" event listeners
   setSelects:function(){
    //"type" select
-   els[data.choose].options.forEach(function(o,i){
-    props[data.choose].append('<option'+(i?'':' selected')+' value="'+o.value+'">'+o.text+'</option>');
+   els.type.options.forEach(function(o,i){
+    mgr.type.append('<option'+(i?'':' selected')+' value="'+o.value+'">'+o.text+'</option>');
     //set data object for each key (widget name)
-    mgr.data[o.value]={baseUrl:data.baseUrl};
+    mgr.data[o.value]={bU:data.baseUrl};
    });
 
-   props[data.choose].on('change',function(){
-    var s=props[data.choose].children(':selected');
+   mgr.type.on('change',function(){
+    var s=mgr.type.children(':selected');
 
     //set active widget name, index and data for it
     mgr.name=s.val();
     mgr.index=s.index();
-    mgr.data[mgr.name]['base_']=els[data.choose].options[mgr.index].base;
-    mgr.data[mgr.name]['iframe_']=els[data.choose].options[mgr.index].iframe;
-    mgr.data[mgr.name]['userid_']=els[data.choose].options[mgr.index].userid;
+    mgr.data[mgr.name]['b_']=els.type.options[mgr.index]['base'];
+    mgr.data[mgr.name]['uid_']=els.type.options[mgr.index]['uid'];
 
-    mgr.selectChange({name:data.choose});
+    mgr.selectChange(mgr.type);
    });
-   //other selects
-   mgr.fullSels.forEach(function(o){
-    els[o].options.forEach(function(o1,i){
-     props[o].append('<option'+(i?'':' selected')+' value="'+o1.value+'">'+o1.text+'</option>');
 
-     //set data from every select for every widget (mgr.data[o2])
-     if(!i)
-     {
-      mgr.getName(o).forEach(function(o2){
-       mgr.data[o2][o]=o1.value;
-      });
-     }
+   //other selects
+   mgr.sels.each(function(){
+    var obj=$(this),
+     d=obj.data(els.ctrls.data);
+
+    els.sels[d.name].options.forEach(function(o,i){
+     obj.append('<option'+(i?'':' selected')+' value="'+o.value+'">'+o.text+'</option>');
     });
 
-    props[o].on('change',function(){
-     mgr.selectChange({name:o});
+    //set data from every select for every widget
+    d.for.forEach(function(o1){
+     mgr.data[o1][d.alias||d.name]=els.sels[d.name].options[0].value;
+    });
+
+    obj.on('change',function(){
+     mgr.selectChange(obj);
     });
    });
 
    //choose first widget
-   props[data.choose].trigger('change');
+   mgr.type.trigger('change');
   },
   //set inputs event listeners
   setInputs:function(){
-   mgr.fullInps.forEach(function(o){
-    props[o].on('focus',function(){
-     props[o].removeClass(data.errCls);
+   mgr.inps.each(function(){
+    var obj=$(this);
+
+    obj.on('focus',function(){
+     obj.removeClass(data.errCls);
     }).on('blur',function(){
-     mgr.inputCheck(o);
+     mgr.inputCheck(obj);
      mgr.setOutput();
     });
    });
   },
   //inputs validation
-  inputCheck:function(o){
-   if(!(new RegExp(els[o].valid)).test($.trim(props[o].val())))
+  inputCheck:function(obj){
+   if(!(new RegExp(obj.data(els.ctrls.data).valid)).test($.trim(obj.val())))
    {
-    props[o].addClass(data.errCls);
+    obj.addClass(data.errCls);
     return false;
    }
 
    return true;
   },
   //depending on the name of select, do things
-  selectChange:function(o){
-   if(o.name=='type')
-    props.blocks.css('display','none').filter('[data-type='+props[o.name].val()+']').css('display','block');else
-    mgr.data[mgr.name][o.name]=props[o.name].val();
+  selectChange:function(obj){
+   var d=obj.data(els.ctrls.data);
+
+   if(obj.is(mgr.type))
+    props.blocks.css('display','none').filter('[data-type='+mgr.type.val()+']').css('display','block');else
+    mgr.data[mgr.name][d.alias||d.name]=obj.val();
 
    mgr.setOutput();
   },
@@ -177,17 +153,20 @@
   setOutput:function(){
    var f=true;
 
-   mgr.fullInps.forEach(function(o){
-    if(~els['type'].options[mgr.index].inpElems.indexOf(o))
+   mgr.inps.each(function(){
+    var obj=$(this),
+     d=obj.data(els.ctrls.data);
+
+    if(~d.for.indexOf(mgr.name))
     {
-     if(!mgr.inputCheck(o))
+     if(!mgr.inputCheck(obj))
       f=false;else
-      mgr.data[mgr.name][o]=props[o].val();
+      mgr.data[mgr.name][d.alias||d.name]=obj.val();
     }
    });
 
    if(f)
-    props.into.attr('src',data.src);
+    mgr.render();
   }
  });
 
