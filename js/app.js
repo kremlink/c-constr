@@ -49,6 +49,7 @@
    var script,
     base=mgr.data[mgr.name]['b_'],
     d,
+    dims,
     param;
 
    d=$.extend({},mgr.data[mgr.name]);
@@ -65,8 +66,9 @@
    }
    if(mgr.name=='form')
    {
+    dims=d['th'].split(':')[1].split('|');
     mgr.inserted=$('<div style="position:absolute;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />\
-    <iframe src="'+mgr.data[mgr.name]['bU']+'form.html?'+param+'" style="width:600px;height:440px;display:block;z-index:1;position:absolute;left:50%;top:50%;margin:-220px 0 0 -300px;" frameborder="0"></iframe>').appendTo(props.into);
+    <iframe src="'+mgr.data[mgr.name]['bU']+'form.html?'+param+'" style="width:'+(dims[0]!='0'?dims[0]+'px':'600px')+';height:'+dims[1]+'px;z-index:1;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);" frameborder="0"></iframe>').appendTo(props.into);
 
     props.output.text('<div class="sovinformburo_iframe"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }

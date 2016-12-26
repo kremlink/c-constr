@@ -17,7 +17,7 @@
 
    items.uid.val(mgr.data['uid_']);
 
-   $('body').addClass(mgr.data['th']);
+   $('body').addClass(mgr.data['th'].split(':')[0]);
 
    if(mgr.data['bg-c'])
    {
