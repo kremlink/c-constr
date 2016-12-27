@@ -73,7 +73,7 @@
     props.output.text('<div class="sovinformburo_iframe"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }
 
-   props.ext.attr('src',mgr.data[mgr.name]['u']);
+   props.ext.attr('src',mgr.data[mgr.name]['u']?'http://'+mgr.data[mgr.name]['u']:'');
   },
   //set data from selects and their "change" event listeners
   setSelects:function(){

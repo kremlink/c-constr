@@ -7,11 +7,22 @@
         <script src="js/jquery-deparam.js"></script>
     </head>
     <body>
+        <div class="top-text theme2">
+            <b>У Вас есть насущный юридический вопрос?</b><br/>
+            Задайте вопрос нашим юристам и адвокатам. Сэкономьте свое время и нервы. Получите квалифицированную бесплатную юридическую консультацию онлайн или по телефону.
+        </div>
         <div class="header-wrap">
             <div class="header">
-                <img class="img" alt=""/>
+                <div class="bg"></div>
+                <img class="img theme1" alt=""/>
                 <div class="h"></div>
                 <div class="sub-h"></div>
+            </div>
+            <div class="about theme3">
+                В соответствии с Федеральным законом Российской Федерации от 27 июля 2006 г. N 152 "О персональных данных" - мы гарантируем полную конфиденциальность всех консультацийВ соответствии с Федеральным законом Российской Федерации от 27 июля 2006 г. N 152 "О персональных данных" - мы гарантируем полную конфиденциальность всех консультаций
+            </div>
+            <div class="about theme4">
+                В соответствии с Федеральным законом Российской Федерации от 27 июля 2006 г. N 152 "О персональных данных" - мы гарантируем полную анонимность всех консультаций
             </div>
         </div>
         <div class="step1">
@@ -19,26 +30,34 @@
                 <span class="plh">Введите Ваш вопрос.<br/><br/>Пример: Недавно оказал посредническую услугу как физическое лицо. Но все пошло не так. Я пытался вернуть свои деньги, но меня обвинили в мошенничестве, и теперь грозят подать иск в суд или в прокуратуру. Как мне быть в данной ситуации?</span>
                 <textarea name="sovinformburo_msg"></textarea>
             </label>
-            <a class="next" href="">Задать вопрос</a>
+            <a class="next" href="">
+                <div class="next-c theme1 theme4"></div>
+                <div class="theme2 theme3 theme4"><span class="ico"></span>Получить консультацию</div>
+                <div class="theme1">Задать вопрос</div>
+            </a>
         </div>
         <div class="step2 hidden">
             <input class="uid" name="sovinformburo_userid" type="hidden" />
             <div class="do">
                 Введите контактны данные. Наш юрист перезвонит Вам<br/>
-                и ответит напоставленный вопрос
+                и ответит на вопрос
             </div>
             <label class="item">
                 <input type="text" name="sovinformburo_name" placeholder="Ваше имя" />
             </label>
             <label class="item">
-                <input type="text" name="sovinformburo_phone" value="+7" maxlength="12" />
+                <input type="text" name="sovinformburo_phone" placeholder="+7" maxlength="12" />
             </label>
-            <a class="next" href="">Отправить</a>
+            <a class="next" href="">
+                <div class="next-c theme1 theme4"></div>
+                <div class="theme2 theme3 theme4"><span class="ico"></span>Получить консультацию</div>
+                <div class="theme1">Задать вопрос</div>
+            </a>
         </div>
         <div class="sent hidden">
-            Ваша форма отправлена, наши менеджеры свяжутся с вами в ближайщее время
+            Ваша форма отправлена, с вами свяжутся в ближайщее время
         </div>
-        <div class="footer">
+        <div class="footer theme1">
             <div class="always">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <path class="colorize" d="M9,15.38A6.38,6.38,0,1,0,2.61,9,6.39,6.39,0,0,0,9,15.38ZM9,3.14A5.86,5.86,0,1,1,3.13,9,5.87,5.87,0,0,1,9,3.14Z" transform="translate(-1 -1)"/>
@@ -72,9 +91,11 @@
                 cls:{
                     hidden:'hidden',
                     err:'error',
-                    loading:'loading'
+                    loading:'loading',
+                    form:'form'
                 },
                 items:{
+                    bg:$('.bg'),
                     hdr:$('.header'),
                     img:$('.img'),
                     h:$('.h'),
@@ -84,6 +105,7 @@
                     step2:$('.step2'),
                     next1:$('.step1 .next'),
                     next2:$('.step2 .next'),
+                    btnColor:$('.next-c'),
                     plh:$('.plh'),
                     ta:$('textarea'),
                     inps:$('input[type=text]'),

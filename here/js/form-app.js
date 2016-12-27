@@ -3,7 +3,8 @@
 }(function($,mgr){
  'use strict';
  var items,
-  cls;
+  cls,
+  body=$('body');
 
  mgr=mgr||{};
 
@@ -17,14 +18,14 @@
 
    items.uid.val(mgr.data['uid_']);
 
-   $('body').addClass(mgr.data['th'].split(':')[0]);
+   body.addClass(mgr.data['th'].split(':')[0]);
 
    if(mgr.data['bg-c'])
    {
     color=mgr.data['bg-c'];
-    items.hdr.css('background','linear-gradient(0deg,'+mgr.data['bg-c']+',rgba('+parseInt(color.substring(1,3),16)+','+parseInt(color.substring(3,5),16)+','+parseInt(color.substring(5,7),16)+',0.7))');
+    items.bg.css('background','linear-gradient(0deg,'+mgr.data['bg-c']+',rgba('+parseInt(color.substring(1,3),16)+','+parseInt(color.substring(3,5),16)+','+parseInt(color.substring(5,7),16)+',0.7))');
     items.img.css('border-color',mgr.data['bg-c']);
-    items.next1.add(items.next2).css('background',mgr.data['bg-c']);
+    items.btnColor.css('background',mgr.data['bg-c']);
     $('head').append('<style>.colorize{fill:'+mgr.data['bg-c']+'}</style>');
    }
    if(mgr.data['t-c'])
@@ -58,6 +59,7 @@
      items.step1.addClass(cls.hidden);
      items.step2.removeClass(cls.hidden);
      parent.postMessage({sovinformburo:true,msg:'form-shown'},'*');
+     body.addClass(cls.form);
     }else
     {
      items.ta.addClass(cls.err);
