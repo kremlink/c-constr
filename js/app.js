@@ -50,7 +50,8 @@
     base=mgr.data[mgr.name]['b_'],
     d,
     dims,
-    param;
+    param,
+    pos;
 
    d=$.extend({},mgr.data[mgr.name]);
    delete d['u'];
@@ -62,9 +63,11 @@
 
    if(mgr.name=='chat')
    {
+    pos=
+    mgr.inserted=$('<div class="sovinformburo_chat"></div>\
+    <iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" style="width:354px;z-index:1;position:absolute;left:50%;top:50%;" frameborder="0"></iframe>').appendTo(props.into);
 
-
-    props.output.text('<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
+    props.output.text('<div class="sovinformburo_chat"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }
    if(mgr.name=='form')
    {
