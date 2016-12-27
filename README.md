@@ -6,4 +6,4 @@ Constructor allows you to get different code while choosing different types of w
 
 # Latest stable demo.
 
-[Link](http://jointgroup.ru/i/new/testing/callbconstr/19.12.2016/index.html)
+[Link](http://joint-group.ru/i/new/testing/callbconstr/19.12.2016/index.html)
