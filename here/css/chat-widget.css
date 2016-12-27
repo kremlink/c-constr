@@ -1,0 +1,452 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic);
+#consult-fixed-widget,
+#consult-fixed-widget * {
+		text-shadow: none;
+		text-align: left;
+		font-family: 'PT Sans', Arial !important;
+		padding: 0;
+		margin: 0;
+		outline: 0;
+		box-sizing: border-box;
+}
+#consult-fixed-widget {
+	position: fixed;
+	bottom: 0;
+	z-index: 99999;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.15;
+	letter-spacing: 0;
+	font-style: normal;
+	color:#333;
+	width: 353px;
+	border-radius:22px 0 0 0;
+	background:#F28900;
+}
+#consult-fixed-widget .consult-fixed-widget__header {
+	padding: 12px 50px 20px 120px;
+	color:#fff;
+	height: 74px;
+	position: relative;
+	cursor:pointer;
+}
+#consult-fixed-widget .consult-fixed-widget__header-pic {
+	position: absolute;
+	left: 8px;
+	top: 6px;
+	border-radius:20px 25px 35px 0;
+}
+#consult-fixed-widget .consult-fixed-widget__header-title {
+	font-size:24px;
+
+}
+#consult-fixed-widget .consult-fixed-widget__header-subtitle {
+	font-size:16px;
+}
+#consult-fixed-widget .consult-fixed-widget__header-status {
+	position: absolute;
+	right: 18px;
+	bottom: 17px;
+	border-radius:8px;
+	background: #fff;
+	color:#333;
+	padding: 0 7px 0 9px;
+	line-height:10px;
+	height: 16px;
+}
+#consult-fixed-widget .consult-fixed-widget__header-status span {
+	vertical-align: middle;
+}
+#consult-fixed-widget .consult-fixed-widget__header-status:after {
+	content:'';
+	display: inline-block;
+	vertical-align: baseline;
+	border-radius:50%;
+	width: 8px;
+	height: 8px;
+	background: #29AF00;
+	margin-left:7px;
+	position: relative;
+	top: 1px;
+}
+#consult-fixed-widget .consult-fixed-widget__header-close {
+	position: absolute;
+	right: 19px;
+	top: 14px;
+	width: 19px;
+	height: 19px;
+	cursor: pointer;
+	display: none;
+}
+#consult-fixed-widget.consult-fixed-widget--active .consult-fixed-widget__header-close {
+	display: block;
+}
+#consult-fixed-widget.consult-fixed-widget--active .consult-fixed-widget__header {
+	cursor:default;
+}
+#consult-fixed-widget .consult-fixed-widget__header-close:before{
+	content:'';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: #F1E4ED;
+	margin-top: -1px;
+}
+#consult-fixed-widget .consult-fixed-widget__link {
+	padding: 1px 10px 0;
+	text-align: center;
+	height: 22px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -22px;
+	z-index: 5;
+	display:none;
+}
+#consult-fixed-widget .consult-fixed-widget__link a {
+	color:#fff;
+	text-decoration: none;
+}
+#consult-fixed-widget .consult-fixed-widget__link a:hover {
+	text-decoration: underline;
+}
+#consult-fixed-widget .consult-fixed-widget__content {
+	margin: 0 4px 22px;	
+	height: 354px;
+	background: #F5F5F5;
+	position: relative;
+	display: none;
+}
+
+/* #consult-fixed-widget .consult-fixed-widget__chat */
+#consult-fixed-widget .consult-fixed-widget__chat {
+	position: relative;
+	height: 100%;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing{
+	margin:10px -5px 0;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing:first-child{
+	margin-top: 36px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader{
+	text-align: center;
+	margin: 0 0 20px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader div{
+	display: inline-block;
+	vertical-align: middle;
+	margin:0 3px;
+	width: 11px;
+	height: 11px;
+	border-radius:50%;
+	background: #FFD18E;
+	-webkit-transition: all 0.3s ease 0s;
+   -moz-transition: all 0.3s ease 0s;
+   -ms-transition: all 0.3s ease 0s;
+   -o-transition: all 0.3s ease 0s;
+   transition: all 0.3s ease 0s;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader div:first-child{
+	width:14px;
+	height: 14px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader div:nth-child(2){
+	width:13px;
+	height:13px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader div:nth-child(3){
+	width:11px;
+	height:11px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader.medium div:first-child{
+	width: 11px;
+	height: 11px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader.medium div:nth-child(2){
+	width: 14px;
+	height: 14px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader.medium div:nth-child(3){
+	width: 13px;
+	height: 13px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader.large div:first-child{
+	width: 13px;
+	height: 13px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader.large div:nth-child(2){
+	width: 11px;
+	height: 11px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-preloader.large div:nth-child(3){
+	width: 14px;
+	height: 14px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-writing-text{
+	color:#656565;
+	text-align: center;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-form {
+	position: absolute;
+	left: 14px;
+	right: 14px;
+	bottom: 18px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-form.consult-fixed-widget__chat-form--hidden {
+	display:none;
+}
+#consult-fixed-widget .consult-fixed-widget__input{
+	display: block;
+	width: 100%;
+	color:#333;
+	border:1px solid #c5c5c5;
+	border-radius:20px;
+	background: #fff;
+	box-shadow:none;
+	outline:none;
+	padding: 8px 10px 10px 10px;
+	font-size: 16px;
+	line-height:1.5;
+	letter-spacing: 0;
+	-webkit-appearance: none;
+			appearance: none;
+}
+#consult-fixed-widget .consult-fixed-widget__input.consult-fixed-widget__input--error {
+	border-color:#f00;
+}
+#consult-fixed-widget .consult-fixed-widget__input::-webkit-input-placeholder {color: #8e8a8a; opacity: 1;}
+#consult-fixed-widget .consult-fixed-widget__input::-moz-placeholder {color: #8e8a8a; opacity: 1;}
+#consult-fixed-widget .consult-fixed-widget__input::-moz-placeholder {color: #8e8a8a; opacity: 1;}
+#consult-fixed-widget .consult-fixed-widget__input:-ms-input-placeholder {color: #8e8a8a; opacity: 1;}
+#consult-fixed-widget .consult-fixed-widget__chat-form .consult-fixed-widget__input{
+	padding-right:44px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-form-submit{
+	position: absolute;
+	top: 8px;
+	right: 13px;
+	width: 28px;
+	height: 28px;
+	border-radius:14px;
+	cursor:pointer;
+	background:#F28900;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-form-submit:before{
+  content:'';
+	position:absolute;
+	-webkit-transform:rotate(45deg);
+	transform:rotate(45deg);
+	top:7px;
+	right:10px;
+	width:12px;
+	height:12px;
+	border-top:1px solid #fff;
+	border-right:1px solid #fff;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-content{
+	height: 288px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-content-scroll-inner{
+	padding: 0 14px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-message{
+	text-align: left;
+	margin-top:11px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-message-text{
+	display: inline-block;
+	padding: 13px 15px 16px;
+	border-radius: 20px;
+	color: #333;
+	background: #ffebd0;
+	border:1px solid #d3d3d3;
+	text-align: left;
+	max-width:298px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-message-date{
+	color:#a4a4a4;
+	padding: 6px 14px;
+	text-align: left;
+	font-size: 12px;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-message.consult-fixed-widget__chat-message--me{
+	text-align: right;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-message.consult-fixed-widget__chat-message--me .consult-fixed-widget__chat-message-text{
+	background: #EBEBEB;
+}
+#consult-fixed-widget .consult-fixed-widget__chat-message.consult-fixed-widget__chat-message--me .consult-fixed-widget__chat-message-date{
+	text-align: right;
+}
+/* #consult-fixed-widget .consult-fixed-widget__chat end */
+
+/* #consult-fixed-widget .consult-fixed-widget__sendform */
+#consult-fixed-widget .consult-fixed-widget__sendform{
+	padding: 14px;
+	display: none;
+}
+#consult-fixed-widget .consult-fixed-widget__sendform-row{
+	margin: 0 0 14px;
+}
+#consult-fixed-widget .consult-fixed-widget__sendform-label{
+	color:#333;
+	padding: 0 13px 10px;
+	display: block;
+}
+#consult-fixed-widget .consult-fixed-widget__sendform-buttons{
+	text-align: right;
+	padding: 26px 0 0;
+}
+#consult-fixed-widget .consult-fixed-widget__sendform-submit{
+	line-height:39px;
+	cursor:pointer;
+	border:0;
+	width: 125px;
+	padding-left:15px;
+	height: 39px;
+	display: inline-block;
+	vertical-align: top;
+	border-radius:20px;
+	position:relative;
+	color:#fff;
+	text-decoration:none;
+	text-transform:uppercase;
+	background:#F28900;
+}
+#consult-fixed-widget .consult-fixed-widget__sendform-submit:before{
+	content:'';
+	position:absolute;
+	-webkit-transform:rotate(45deg);
+	transform:rotate(45deg);
+	top:13px;
+	right:10px;
+	width:12px;
+	height:12px;
+	border-top:1px solid #fff;
+	border-right:1px solid #fff;
+}
+/* #consult-fixed-widget .consult-fixed-widget__sendform end */
+
+/*----------- SCROLLPANE -----------*/
+/* core */
+#consult-fixed-widget .jspContainer{
+	overflow: hidden;
+	position: relative;
+}
+#consult-fixed-widget .jspPane{
+	position: absolute;
+}
+#consult-fixed-widget .jspVerticalBar{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16px;
+	height: 100%;
+	background: red;
+}
+#consult-fixed-widget .jspHorizontalBar{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red;
+}
+#consult-fixed-widget .jspVerticalBar *,
+#consult-fixed-widget .jspHorizontalBar *{
+	margin: 0;
+	padding: 0;
+}
+#consult-fixed-widget .jspCap{
+	display: none;
+}
+#consult-fixed-widget .jspHorizontalBar .jspCap{
+	float: left;
+}
+#consult-fixed-widget .jspTrack{
+	background: #dde;
+	position: relative;
+}
+#consult-fixed-widget .jspDrag{
+	background: #bbd;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+#consult-fixed-widget .jspHorizontalBar .jspTrack,
+#consult-fixed-widget .jspHorizontalBar .jspDrag{
+	float: left;
+	height: 100%;
+}
+#consult-fixed-widget .jspArrow{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+#consult-fixed-widget .jspArrow.jspDisabled{
+	cursor: default;
+	background: #80808d;
+}
+#consult-fixed-widget .jspVerticalBar .jspArrow{
+	height: 16px;
+}
+#consult-fixed-widget .jspHorizontalBar .jspArrow{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+#consult-fixed-widget .jspVerticalBar .jspArrow:focus{
+	outline: none;
+}
+#consult-fixed-widget .jspCorner{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+/* core end */
+
+/* custom */
+#consult-fixed-widget .scrollpane{
+	width: 100%;
+	height:100%;
+	overflow: auto;
+}
+#consult-fixed-widget .scrollpane .jspPane{
+	left:0;
+}
+#consult-fixed-widget .scrollpane.jspScrollable .jspPane{
+	right:0 !important;
+}
+#consult-fixed-widget .scrollpane .jspDrag{
+	background:#d4d4d4;
+	width:3px;
+	height:93px;
+	left:0;
+	margin:0;
+	border-radius:5px;
+}
+#consult-fixed-widget .scrollpane .jspDrag:hover{
+	background:#333;
+}
+#consult-fixed-widget .scrollpane .jspVerticalBar{
+	background:none;
+	width:3px;
+	right:5px;
+}
+#consult-fixed-widget .scrollpane .jspCap{
+	display:block;
+	height:10px;
+	width:1px;
+}
+#consult-fixed-widget .scrollpane .jspTrack{
+	background:none;
+	width:3px;
+	margin:0 auto;
+}
+/* custom end */
+/*----------- SCROLLPANE END -----------*/
