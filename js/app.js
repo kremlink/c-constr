@@ -41,8 +41,28 @@
     }
    });
 
+   mgr.setFrameListener();
    mgr.setSelects();
    mgr.setInputs();
+  },
+  //chat tells parent about its size change
+  setFrameListener:function(){
+   var notif,
+    block;
+
+   window.addEventListener("message",function(e){
+    if(mgr.name=='chat'&&e.data&&e.data.sovinformburo)
+    {
+     block=mgr.inserted.filter('.sovinformburo_chat');
+     if(!block.find('.sovinformburo_notify-pop').length)
+      notif=$('<div class="sovinformburo_notify-pop" />').appendTo(block);
+
+     if(e.data.action=='minify')
+      block.height(40);
+     if(e.data.action=='restore')
+      block.height(450);
+    }
+   },false);
   },
   //render data
   render:function(){
@@ -51,7 +71,7 @@
     d,
     dims,
     param,
-    pos;
+    pos='';
 
    d=$.extend({},mgr.data[mgr.name]);
    delete d['u'];
@@ -63,9 +83,13 @@
 
    if(mgr.name=='chat')
    {
-    pos=
-    mgr.inserted=$('<div class="sovinformburo_chat"></div>\
-    <iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" style="width:354px;z-index:1;position:absolute;left:50%;top:50%;" frameborder="0"></iframe>').appendTo(props.into);
+    if(d['p']=='l-b')
+     pos='left:'+d['sh']+'px';
+    if(d['p']=='r-b')
+     pos='right:'+d['sh']+'px';
+    mgr.inserted=$('<div style="position:absolute;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />\
+    <div class="sovinformburo_chat" style="overflow:hidden;transition:height .5s ease-in-out;height:40px;position:absolute;z-index:1;bottom:0;'+pos+'">\
+    <iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo(props.into);
 
     props.output.text('<div class="sovinformburo_chat"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }

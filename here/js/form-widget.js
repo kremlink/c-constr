@@ -28,22 +28,29 @@ otherJquerySpace = {};
 			window.addEventListener("message",function(e){
 				if(e.data&&e.data.sovinformburo)
 				{
-					if(data['y-m']&&window['yaCounter'+data['y-m']])
-						window['yaCounter'+data['y-m']].reachGoal('sovinformburo_'+e.data.msg);
-					if(data['g-a']&&window.ga)
+					if(e.data.msg)
 					{
-						ga('send',{
-							hitType:'event',
-							eventCategory:'sovinformburo',
-							eventAction:'sent_'+e.data.msg
-						});
+						if(data['y-m']&&window['yaCounter'+data['y-m']])
+							window['yaCounter'+data['y-m']].reachGoal('sovinformburo_'+e.data.msg);
+						if(data['g-a']&&window.ga)
+						{
+							ga('send',{
+								hitType:'event',
+								eventCategory:'sovinformburo',
+								eventAction:'sent_'+e.data.msg
+							});
+						}
+					}
+					if(e.data.action)
+					{
+
 					}
 				}
 			},false);
 
 			dims=data['th'].split(':')[1].split('|');
 
-			$('<iframe src="'+data.bU+'form.html?'+$.param(data)+'" style="width:'+(dims[0]!='0'?dims[0]+'px':'100%')+';height:'+dims[1]+'px;display:block;margin:0 auto;" frameborder="0"></iframe>').appendTo('.sovinformburo_iframe');
+			$('<iframe src="'+data.bU+'form.html?'+$.param(data)+'" style="width:'+(dims[0]!='0'?dims[0]+'px':'100%')+';height:'+dims[1]+'px;display:block;margin:0 auto;" frameborder="0"></iframe>').appendTo('.sovinformburo_form');
 		});
 	})($);
 
