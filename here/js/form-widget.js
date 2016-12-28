@@ -43,7 +43,7 @@ otherJquerySpace = {};
 
 			dims=data['th'].split(':')[1].split('|');
 
-			$('<iframe src="'+data.bU+'form.html?'+$.param(data)+'" style="width:'+(dims[0]!='0'?dims[0]+'px':'100%')+';height:'+dims[1]+'px;display:block;margin:0 auto;" frameborder="0"></iframe>').appendTo('.sovinformburo_iframe');
+			$('<iframe src="'+data.bU+'form.html?'+$.param(data)+'" style="width:'+(dims[0]!='0'?dims[0]+'px':'100%')+';height:'+dims[1]+'px;display:block;margin:0 auto;" frameborder="0"></iframe>').appendTo('.sovinformburo_form');
 		});
 	})($);
 
