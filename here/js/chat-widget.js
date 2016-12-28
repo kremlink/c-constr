@@ -11,7 +11,7 @@ otherJquerySpace = {};
 
 	(function($){
 		$(document).ready(function(){
-			var srcD=decodeURIComponent($('[src*="form-widget.js"]').attr('src')),
+			var srcD=decodeURIComponent($('[src*="sovinformburo-chat.js"]').attr('src')),
 				data=$.deparam(srcD.substr(srcD.indexOf('?')+1)),
 				inserted,
 				pos,
@@ -56,10 +56,10 @@ otherJquerySpace = {};
 
 			if(data['p']=='l-b')
 				pos='left:'+data['sh']+'px';
-			if(d['p']=='r-b')
+			if(data['p']=='r-b')
 				pos='right:'+data['sh']+'px';
 			inserted=$('<div class="sovinformburo_chat" style="overflow:hidden;transition:height .5s ease-in-out;height:40px;position:absolute;z-index:1;bottom:0;'+pos+'">\
-    <iframe src="'+data.bU['bU']+'chat.html?'+$.param(data)+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo($('body'));
+    <iframe src="'+data['bU']+'chat.html?'+$.param(data)+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo($('body'));
 
 			block=inserted.filter('.sovinformburo_chat');
 			notif=$('<div class="sovinformburo_notify-pop" />').appendTo(block);

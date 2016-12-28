@@ -91,7 +91,7 @@
     <div class="sovinformburo_chat" style="overflow:hidden;transition:height .5s ease-in-out;height:40px;position:absolute;z-index:1;bottom:0;'+pos+'">\
     <iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo(props.into);
 
-    props.output.text('<div class="sovinformburo_chat"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
+    props.output.text('<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }
    if(mgr.name=='form')
    {

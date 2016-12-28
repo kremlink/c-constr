@@ -11,7 +11,7 @@ otherJquerySpace = {};
 
 	(function($){
 		$(document).ready(function(){
-			var srcD=decodeURIComponent($('[src*="form-widget.js"]').attr('src')),
+			var srcD=decodeURIComponent($('[src*="sovinformburo-form.js"]').attr('src')),
 				data=$.deparam(srcD.substr(srcD.indexOf('?')+1)),
 				dims;
 
