@@ -24,12 +24,14 @@
                     <div class="constr-h1">Настройка виджета</div>
                     <div class="constr-b">Тематика — <span class="constr-highlight">Юридические услуги</span></div>
                     <div class="constr-b">URL подключаемого сайта</div>
-                    <input data-data='{"for":["chat","form"],"name":"u"}' placeholder="Укажите URL без www и http://" type="text" value="" />
+                    <input data-data='{"for":["chat","form"],"name":"u","exclude":true}' placeholder="Укажите URL без www и http://" type="text" value="" />
                     <div class="constr-b">Рекламная форма</div>
                     <select class="constr-type"></select>
                     <div class="constr-block constr-type-block" data-type="chat">
-                        <div class="constr-b">Готовое цветовое решение</div>
+                        <div class="constr-b">Вид формы</div>
                         <select data-data='{"for":["chat"],"name":"ch-th","alias":"th"}'></select>
+                        <div class="constr-b">Готовое цветовое решение</div>
+                        <select data-data='{"for":["chat"],"name":"ch-r","exclude":true}'></select>
                         <div class="constr-h1">Местоположение виджета</div>
                         <div class="constr-b">Позиция</div>
                         <select data-data='{"for":["chat"],"name":"p"}'></select>
@@ -37,8 +39,10 @@
                         <input data-data='{"for":["chat"],"name":"sh","valid":"\\S+"}' type="text" value="0" />
                     </div>
                     <div class="constr-type-block" data-type="form">
+                        <div class="constr-b">Вид формы</div>
+                        <select data-data='{"for":["chat"],"name":"f-th","alias":"th"}'></select>
                         <div class="constr-b">Готовое цветовое решение</div>
-                        <select data-data='{"for":["form"],"name":"f-th","alias":"th"}'></select>
+                        <select data-data='{"for":["chat"],"name":"f-r","exclude":true}'></select>
                     </div>
                     <div class="constr-b">Произвольное цветовое решение</div>
                     <div class="constr-color">
@@ -124,12 +128,19 @@
                             p:{
                                 options:[{value:'l-b',text:'Левый нижний угол'},{value:'r-b',text:'Правый нижний угол'}]
                             },
-                            //color select data
+                            //theme select data
                             'ch-th':{
-                                options:[{value:'theme1',text:'Оранжевое'},{value:'theme2',text:'Синее'},{value:'theme3',text:'Зеленое'}]
+                                options:[{value:'theme1',text:'Theme1'},{value:'theme2',text:'Theme2'},{value:'theme3',text:'Theme3'}]
                             },
                             'f-th':{
-                                options:[{value:'theme1:0|440',text:'Старое'},{value:'theme2:598|415',text:'Новое1'},{value:'theme3:0|415',text:'Новое2'},{value:'theme4:598|415',text:'Новое3'}]
+                                options:[{value:'theme1:0|440',text:'Theme1'},{value:'theme2:598|415',text:'Theme2'},{value:'theme3:0|415',text:'Theme3'},{value:'theme4:598|415',text:'Theme4'}]
+                            },
+                            //color set select data
+                            'ch-r':{
+                                options:[{value:'#f00,#00f',text:'Красно-синее'},{value:'#0f0,#fff',text:'Зелено-белое'}]
+                            },
+                            'f-r':{
+                                options:[{value:'#00f,#000',text:'Сине-черное'},{value:'#f00,#00f',text:'Красно-синее'},{value:'#0f0,#fff',text:'Зелено-белое'}]
                             },
                             //photo select data
                             'ch-ph':{
@@ -152,7 +163,8 @@
                     data:{
                         errCls:'error',
                         src:'constr.html',
-                        baseUrl:'here/'
+                        baseUrl:'here/',
+                        ignore:['u','ch-r','f-r']
                     }
                 }
             };
