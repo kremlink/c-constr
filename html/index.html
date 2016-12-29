@@ -11,14 +11,14 @@
                     <div class="constr-h1">Настройка виджета</div>
                     <div class="constr-b">Тематика — <span class="constr-highlight">Юридические услуги</span></div>
                     <div class="constr-b">URL подключаемого сайта</div>
-                    <input data-data='{"for":["chat","form"],"name":"u","exclude":true}' placeholder="Укажите URL без www и http://" type="text" value="" />
+                    <input data-data='{"for":["chat","form"],"name":"u"}' placeholder="Укажите URL без www и http://" type="text" value="" />
                     <div class="constr-b">Рекламная форма</div>
                     <select class="constr-type"></select>
                     <div class="constr-block constr-type-block" data-type="chat">
                         <div class="constr-b">Вид формы</div>
                         <select data-data='{"for":["chat"],"name":"ch-th","alias":"th"}'></select>
                         <div class="constr-b">Готовое цветовое решение</div>
-                        <select data-data='{"for":["chat"],"name":"ch-r","exclude":true}'></select>
+                        <select data-data='{"for":["chat"],"name":"ch-r"}'></select>
                         <div class="constr-h1">Местоположение виджета</div>
                         <div class="constr-b">Позиция</div>
                         <select data-data='{"for":["chat"],"name":"p"}'></select>
@@ -27,19 +27,19 @@
                     </div>
                     <div class="constr-type-block" data-type="form">
                         <div class="constr-b">Вид формы</div>
-                        <select data-data='{"for":["chat"],"name":"f-th","alias":"th"}'></select>
+                        <select data-data='{"for":["form"],"name":"f-th","alias":"th"}'></select>
                         <div class="constr-b">Готовое цветовое решение</div>
-                        <select data-data='{"for":["chat"],"name":"f-r","exclude":true}'></select>
+                        <select data-data='{"for":["form"],"name":"f-r"}'></select>
                     </div>
                     <div class="constr-b">Произвольное цветовое решение</div>
                     <div class="constr-color">
                         <div>
                             Цвет формы
-                            <input data-data='{"for":["chat","form"],"name":"bg-c","color":true}' type="text" value="#bc3c33" />
+                            <input data-data='{"for":["chat","form"],"name":"bg-c","color":true}' type="text" value="" />
                         </div>
                         <div>
                             Цвет шрифта
-                            <input data-data='{"for":["chat","form"],"name":"t-c","color":true}' type="text" value="#fff" />
+                            <input data-data='{"for":["chat","form"],"name":"t-c","color":true}' type="text" value="" />
                         </div>
                     </div>
                     <div class="constr-type-block" data-type="form">
@@ -122,10 +122,10 @@
                             },
                             //color set select data
                             'ch-r':{
-                                options:[{value:'#f00,#00f',text:'Красно-синее'},{value:'#0f0,#fff',text:'Зелено-белое'}]
+                                options:[{value:'#bc3c33,#fff',text:'Бордово-белое'},{value:'#0f0,#fff',text:'Зелено-белое'}]
                             },
                             'f-r':{
-                                options:[{value:'#00f,#000',text:'Сине-черное'},{value:'#f00,#00f',text:'Красно-синее'},{value:'#0f0,#fff',text:'Зелено-белое'}]
+                                options:[{value:'#bc3c33,#fff',text:'Бордово-белое'},{value:'#f00,#00f',text:'Красно-синее'},{value:'#0f0,#fff',text:'Зелено-белое'}]
                             },
                             //photo select data
                             'ch-ph':{
@@ -149,7 +149,10 @@
                         errCls:'error',
                         src:'constr.html',
                         baseUrl:'here/',
-                        ignore:['u','ch-r','f-r']
+                        //don't add these elements' values to src
+                        omit:['u','ch-r','f-r'],
+                        //do nothing when changing these elements' values
+                        ignore:['ch-r','f-r']
                     }
                 }
             };

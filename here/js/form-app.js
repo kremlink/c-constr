@@ -55,10 +55,8 @@
 
     if(v&&v.length>2)
     {
-     items.step1.addClass(cls.hidden);
-     items.step2.removeClass(cls.hidden);
+     body.addClass(cls.step2);
      parent.postMessage({sovinformburo:true,msg:'form-shown'},'*');
-     body.addClass(cls.form);
     }else
     {
      items.ta.addClass(cls.err);
@@ -103,8 +101,7 @@
        parent.postMessage({sovinformburo:true,msg:'sent'},'*');
        items.step2.removeClass(cls.loading);
        if(data['status'] == "true"){
-        items.step2.addClass(cls.hidden);
-        items.sent.removeClass(cls.hidden);
+        body.addClass(cls.sent);
        }else
        {
         alert('Произошла ошибка при отправке!');

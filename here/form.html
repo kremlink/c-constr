@@ -36,7 +36,7 @@
                 <div class="theme1">Задать вопрос</div>
             </a>
         </div>
-        <div class="step2 hidden">
+        <div class="step2">
             <input class="uid" name="sovinformburo_userid" type="hidden" />
             <div class="do">
                 Введите контактны данные. Наш юрист перезвонит Вам<br/>
@@ -54,7 +54,7 @@
                 <div class="theme1">Задать вопрос</div>
             </a>
         </div>
-        <div class="sent hidden">
+        <div class="sent">
             Ваша форма отправлена, с вами свяжутся в ближайщее время
         </div>
         <div class="footer theme1">
@@ -92,7 +92,8 @@
                     hidden:'hidden',
                     err:'error',
                     loading:'loading',
-                    form:'form'
+                    step2:'form',
+                    sent:'form-sent'
                 },
                 items:{
                     bg:$('.bg'),

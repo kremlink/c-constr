@@ -20,6 +20,7 @@
   type:$(els.type.item),//type select
   sels:$(els.ctrls.items).filter('select'),
   inps:$(els.ctrls.items).filter('input'),
+  colorInps:null,
   inserted:null,
   init:function(){
    //set all used DOM items
@@ -30,7 +31,7 @@
    props.ext=$(els.dest.external);
    props.output=$(els.output);
 
-   mgr.inps.filter(function(){
+   mgr.colorInps=mgr.inps.filter(function(){
     return $(this).data(els.ctrls.data).color;
    }).spectrum({
     color:this.value,
@@ -74,7 +75,10 @@
     pos='';
 
    d=$.extend({},mgr.data[mgr.name]);
-   delete d['u'];
+   for(var x in d)
+    if(d.hasOwnProperty(x)&&~data.omit.indexOf(x))
+     delete d[x];
+
    delete d['b_'];
    param=$.param(d);
 
@@ -138,10 +142,24 @@
     d.for.forEach(function(o1){
      mgr.data[o1][d.alias||d.name]=els.sels[d.name].options[0].value;
     });
+   });
 
-    obj.on('change',function(){
-     mgr.selectChange(obj);
+   mgr.sels.filter(function(){
+    var d=$(this).data(els.ctrls.data);
+
+    return ~data.ignore.indexOf(d.name);
+   }).on('change',function(){
+    var c=$(this).val().split(',');
+
+    mgr.colorInps.each(function(i){
+     $(this).spectrum('set',c[i]);
     });
+   }).each(function(){
+    $(this).trigger('change');
+   });
+
+   mgr.sels.on('change',function(){
+    mgr.selectChange($(this));
    });
 
    //choose first widget
