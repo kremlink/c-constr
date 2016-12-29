@@ -7,6 +7,22 @@ body{
 	overflow:hidden;
 	font:14px/16px 'PT Sans', sans-serif;
 	position:relative;
+	&.form{
+		.step1{
+			display:none;
+		}
+		.step2{
+			display:block;
+		}
+	}
+	&.form-sent{
+		.step2{
+			display:none;
+		}
+		.sent{
+			display:block;
+		}
+	}
 	&.theme1{
 		height:438px;
 		font-size:18px;
@@ -376,9 +392,10 @@ body{
 	height:194px;
 	padding:0 24px;
 	position:relative;
-}
-.step1.hidden,.step2.hidden,.sent.hidden{
 	display:none;
+}
+.step1{
+	display:block;
 }
 .step2{
 	&:after{
@@ -394,6 +411,7 @@ body{
 	margin-top:50px;
 	font-size:18px;
 	font-weight:700;
+	display:none;
 }
 .item{
 	display:block;

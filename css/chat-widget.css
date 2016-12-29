@@ -1,3 +1,6 @@
-
+body {
+  margin: 0;
+  height: 450px;
+  position: relative; }
 
 /*# sourceMappingURL=chat-widget.css.map */

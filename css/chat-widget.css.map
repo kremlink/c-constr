@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACA,IAAI;EACF,MAAM,EAAC,CAAC;EACR,MAAM,EAAC,KAAK;EACZ,QAAQ,EAAC,QAAQ",
+"sources": ["../scss/chat-widget.scss"],
 "names": [],
 "file": "chat-widget.css"
 }

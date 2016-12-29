@@ -6,6 +6,14 @@ body {
   overflow: hidden;
   font: 14px/16px 'PT Sans', sans-serif;
   position: relative; }
+  body.form .step1 {
+    display: none; }
+  body.form .step2 {
+    display: block; }
+  body.form-sent .step2 {
+    display: none; }
+  body.form-sent .sent {
+    display: block; }
   body.theme1 {
     height: 438px;
     font-size: 18px;
@@ -294,10 +302,11 @@ body {
 .step1, .step2, .sent {
   height: 194px;
   padding: 0 24px;
-  position: relative; }
-
-.step1.hidden, .step2.hidden, .sent.hidden {
+  position: relative;
   display: none; }
+
+.step1 {
+  display: block; }
 
 .step2:after {
   content: '';
@@ -310,7 +319,8 @@ body {
 .sent {
   margin-top: 50px;
   font-size: 18px;
-  font-weight: 700; }
+  font-weight: 700;
+  display: none; }
 
 .item {
   display: block; }

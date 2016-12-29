@@ -11,7 +11,7 @@
  $.extend(mgr,{
   data:$.deparam(location.search.substring(1)),
   init:function(){
-   var color;
+   var color=mgr.data['bg-c'];
 
    items=mgr.items;
    cls=mgr.cls;
@@ -20,10 +20,9 @@
 
    body.addClass(mgr.data['th'].split(':')[0]);
 
-   if(mgr.data['bg-c'])
+   if(color)
    {
-    color=mgr.data['bg-c'];
-    items.bg.css('background','linear-gradient(0deg,'+mgr.data['bg-c']+',rgba('+parseInt(color.substring(1,3),16)+','+parseInt(color.substring(3,5),16)+','+parseInt(color.substring(5,7),16)+',0.7))');
+    items.bg.css('background','linear-gradient(0deg,'+color+',rgba('+parseInt(color.substring(1,3),16)+','+parseInt(color.substring(3,5),16)+','+parseInt(color.substring(5,7),16)+',0.7))');
     items.img.css('border-color',mgr.data['bg-c']);
     items.btnColor.css('background',mgr.data['bg-c']);
     $('head').append('<style>.colorize{fill:'+mgr.data['bg-c']+'}</style>');
@@ -56,10 +55,8 @@
 
     if(v&&v.length>2)
     {
-     items.step1.addClass(cls.hidden);
-     items.step2.removeClass(cls.hidden);
+     body.addClass(cls.step2);
      parent.postMessage({sovinformburo:true,msg:'form-shown'},'*');
-     body.addClass(cls.form);
     }else
     {
      items.ta.addClass(cls.err);
@@ -104,8 +101,7 @@
        parent.postMessage({sovinformburo:true,msg:'sent'},'*');
        items.step2.removeClass(cls.loading);
        if(data['status'] == "true"){
-        items.step2.addClass(cls.hidden);
-        items.sent.removeClass(cls.hidden);
+        body.addClass(cls.sent);
        }else
        {
         alert('Произошла ошибка при отправке!');

@@ -20,6 +20,7 @@
   type:$(els.type.item),//type select
   sels:$(els.ctrls.items).filter('select'),
   inps:$(els.ctrls.items).filter('input'),
+  colorInps:null,
   inserted:null,
   init:function(){
    //set all used DOM items
@@ -30,7 +31,7 @@
    props.ext=$(els.dest.external);
    props.output=$(els.output);
 
-   mgr.inps.filter(function(){
+   mgr.colorInps=mgr.inps.filter(function(){
     return $(this).data(els.ctrls.data).color;
    }).spectrum({
     color:this.value,
@@ -41,8 +42,28 @@
     }
    });
 
+   mgr.setFrameListener();
    mgr.setSelects();
    mgr.setInputs();
+  },
+  //chat tells parent about its size change
+  setFrameListener:function(){
+   var notif,
+    block;
+
+   window.addEventListener("message",function(e){
+    if(mgr.name=='chat'&&e.data&&e.data.sovinformburo)
+    {
+     block=mgr.inserted.filter('.sovinformburo_chat');
+     if(!block.find('.sovinformburo_notify-pop').length)
+      notif=$('<div class="sovinformburo_notify-pop" />').appendTo(block);
+
+     if(e.data.action=='minify')
+      block.height(40);
+     if(e.data.action=='restore')
+      block.height(450);
+    }
+   },false);
   },
   //render data
   render:function(){
@@ -50,10 +71,14 @@
     base=mgr.data[mgr.name]['b_'],
     d,
     dims,
-    param;
+    param,
+    pos='';
 
    d=$.extend({},mgr.data[mgr.name]);
-   delete d['u'];
+   for(var x in d)
+    if(d.hasOwnProperty(x)&&~data.omit.indexOf(x))
+     delete d[x];
+
    delete d['b_'];
    param=$.param(d);
 
@@ -62,7 +87,13 @@
 
    if(mgr.name=='chat')
    {
-
+    if(d['p']=='l-b')
+     pos='left:'+d['sh']+'px';
+    if(d['p']=='r-b')
+     pos='right:'+d['sh']+'px';
+    mgr.inserted=$('<div style="position:absolute;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />\
+    <div class="sovinformburo_chat" style="overflow:hidden;transition:height .5s ease-in-out;height:40px;position:absolute;z-index:1;bottom:0;'+pos+'">\
+    <iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo(props.into);
 
     props.output.text('<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }
@@ -111,10 +142,24 @@
     d.for.forEach(function(o1){
      mgr.data[o1][d.alias||d.name]=els.sels[d.name].options[0].value;
     });
+   });
 
-    obj.on('change',function(){
-     mgr.selectChange(obj);
+   mgr.sels.filter(function(){
+    var d=$(this).data(els.ctrls.data);
+
+    return ~data.ignore.indexOf(d.name);
+   }).on('change',function(){
+    var c=$(this).val().split(',');
+
+    mgr.colorInps.each(function(i){
+     $(this).spectrum('set',c[i]);
     });
+   }).each(function(){
+    $(this).trigger('change');
+   });
+
+   mgr.sels.on('change',function(){
+    mgr.selectChange($(this));
    });
 
    //choose first widget
