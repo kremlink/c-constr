@@ -21,7 +21,7 @@
   sels:$(els.ctrls.items).filter('select'),
   inps:$(els.ctrls.items).filter('input'),
   colorInps:null,
-  inserted:null,
+  inserted:{},
   init:function(){
    //set all used DOM items
    props=mgr.props;
@@ -48,20 +48,31 @@
   },
   //chat tells parent about its size change
   setFrameListener:function(){
-   var notif,
-    block;
-
    window.addEventListener("message",function(e){
     if(mgr.name=='chat'&&e.data&&e.data.sovinformburo)
     {
-     block=mgr.inserted.filter('.sovinformburo_chat');
-     if(!block.find('.sovinformburo_notify-pop').length)
-      notif=$('<div class="sovinformburo_notify-pop" />').appendTo(block);
-
-     if(e.data.action=='minify')
-      block.height(40);
-     if(e.data.action=='restore')
-      block.height(450);
+     switch(e.data.action)
+     {
+      case 'init':
+       mgr.inserted.iframe.css('position','static').css(e.data.size);
+       mgr.inserted.wrap.css(e.data.css.wrap).height(e.data.minH);
+       mgr.inserted.block.css(e.data.css.block);
+       mgr.inserted.notify=$(e.data.notify).appendTo(mgr.inserted.wrap);
+       break;
+      case 'resize':
+       mgr.inserted.wrap.height(e.data.height);
+       break;
+      case 'notify':
+       mgr.inserted.notify.css(e.data.css);
+     }
+    }
+    if(mgr.name=='form'&&e.data&&e.data.sovinformburo)
+    {
+     switch(e.data.action)
+     {
+      case 'init':
+       mgr.inserted.wrap.css(e.data.css).css('width',e.data.css.width=='100%'?600:e.data.css.width);
+     }
     }
    },false);
   },
@@ -70,38 +81,31 @@
    var script,
     base=mgr.data[mgr.name]['b_'],
     d,
-    dims,
     param,
-    pos='';
+    x;
 
    d=$.extend({},mgr.data[mgr.name]);
-   for(var x in d)
+   for(x in d)
     if(d.hasOwnProperty(x)&&~data.omit.indexOf(x))
      delete d[x];
 
    delete d['b_'];
    param=$.param(d);
 
-   if(mgr.inserted)
-    mgr.inserted.remove();
+   if(mgr.inserted.wrap&&mgr.inserted.wrap.length)
+    mgr.inserted.wrap.remove();
 
    if(mgr.name=='chat')
    {
-    if(d['p']=='l-b')
-     pos='left:'+d['sh']+'px';
-    if(d['p']=='r-b')
-     pos='right:'+d['sh']+'px';
-    mgr.inserted=$('<div style="position:absolute;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />\
-    <div class="sovinformburo_chat" style="overflow:hidden;transition:height .5s ease-in-out;height:40px;position:absolute;z-index:1;bottom:0;'+pos+'">\
-    <iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo(props.into);
+    mgr.inserted.wrap=$('<div class="sovinformburo_chat" />').appendTo(props.into);
+    mgr.inserted.block=$('<div class="sovinformburo_chat-block" />').appendTo(mgr.inserted.wrap);
+    mgr.inserted.iframe=$('<iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" frameborder="0"></iframe></div>').appendTo(mgr.inserted.block);
 
     props.output.text('<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }
    if(mgr.name=='form')
    {
-    dims=d['th'].split(':')[1].split('|');
-    mgr.inserted=$('<div style="position:absolute;z-index:1;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.5);" />\
-    <iframe src="'+mgr.data[mgr.name]['bU']+'form.html?'+param+'" style="width:'+(dims[0]!='0'?dims[0]+'px':'600px')+';height:'+dims[1]+'px;z-index:1;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);" frameborder="0"></iframe>').appendTo(props.into);
+    mgr.inserted.wrap=$('<iframe src="'+mgr.data[mgr.name]['bU']+'form.html?'+param+'" style="z-index:1;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);" frameborder="0"></iframe>').appendTo(props.into);
 
     props.output.text('<div class="sovinformburo_form"></div>\n<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }

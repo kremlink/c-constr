@@ -2,21 +2,133 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="../css/chat-widget.css" />
+        <link rel="stylesheet" href="css/chat-widget.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="js/jquery-deparam.js"></script>
+        <script src="js/jquery.mousewheel.js"></script>
     </head>
     <body>
+        <div class="hdr">
+            <div class="face"></div>
+            <div class="name"></div>
+            <div class="job"></div>
+            <div class="online"></div>
+            <div class="notif"><div class="amt"></div>online</div>
+        </div>
+        <div class="body">
+            <div class="step1">
+                <div class="msgs-wrap">
+                    <div class="msgs"></div>
+                </div>
+                <div class="next-wrap">
+                    <input class="theme1" placeholder="Введите сообщение и нажмите Enter" type="text"/>
+                    <textarea class="theme2 theme3" placeholder="Введите текст сообщения"></textarea>
+                    <span class="next">
+                        <svg class="theme2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16">
+                            <path class="colorize" d="M12.56,7.79a1.57,1.57,0,1,1-2.22,0A1.57,1.57,0,0,1,12.56,7.79Zm2.22-2.22a0.79,0.79,0,1,0-1.11,1.11,3.13,3.13,0,0,1,0,4.44,0.79,0.79,0,0,0,1.11,1.11A4.7,4.7,0,0,0,14.78,5.57ZM17,3.35A0.79,0.79,0,0,0,15.9,4.46a6.28,6.28,0,0,1,0,8.88A0.79,0.79,0,0,0,17,14.45,7.85,7.85,0,0,0,17,3.35Zm2.22-2.22a0.79,0.79,0,0,0-1.11,1.11,9.42,9.42,0,0,1,0,13.32,0.79,0.79,0,0,0,1.11,1.11A11,11,0,0,0,19.23,1.13Zm-10,4.44a0.79,0.79,0,0,0-1.11,0,4.7,4.7,0,0,0,0,6.66,0.79,0.79,0,1,0,1.11-1.11,3.13,3.13,0,0,1,0-4.44A0.78,0.78,0,0,0,9.23,5.57ZM7,4.46A0.79,0.79,0,1,0,5.89,3.35a7.85,7.85,0,0,0,0,11.1A0.79,0.79,0,0,0,7,13.34,6.28,6.28,0,0,1,7,4.46ZM4.78,2.24A0.79,0.79,0,1,0,3.67,1.13a11,11,0,0,0,0,15.54,0.79,0.79,0,0,0,1.11-1.11A9.42,9.42,0,0,1,4.78,2.24Z" transform="translate(-0.45 -0.9)"/>
+                        </svg>
+                        <span class="next-bg"></span>
+                    </span>
+                    <div class="ta-bdr theme3"></div>
+                </div>
+            </div>
+            <div class="step2">
+                <input class="uid" name="sovinformburo_userid" type="hidden" />
+                <input name="sovinformburo_type" type="hidden" value="chat" />
+                <label class="form-item">
+                    <span class="form-item-h">Ваше имя</span>
+                    <span class="form-input">
+                        <span class="form-item-bd theme3"></span>
+                        <input type="text" name="sovinformburo_name" placeholder="Иван Иванович" />
+                    </span>
+                </label>
+                <label class="form-item phone">
+                    <span class="form-item-h">Контактный телефон</span>
+                    <span class="form-input">
+                        <span class="form-item-bd theme3"></span>
+                        <input type="text" name="sovinformburo_phone" placeholder="9161111111" maxlength="10" />
+                    </span>
+                </label>
+                <span class="next">
+                    <span class="next-bg"><span>ОТПРАВИТЬ</span></span>
+                </span>
+            </div>
+            <div class="sent">
+                Спасибо за обращение! Юрист свяжется с Вами в течение 10 минут
+            </div>
+            <div class="info theme2">Тут будет написано что-то про закон. бла бла бла</div>
+        </div>
+        <a class="toggler" href=""></a>
         <script>
             var app={
                 cls:{
-
+                    opened:'opened',
+                    hasNotif:'has-notif',
+                    err:'error',
+                    loading:'loading',
+                    step2:'form',
+                    sent:'form-sent',
+                    me:'me'
                 },
                 items:{
-
+                    hdr:$('.hdr'),
+                    face:$('.face'),
+                    name:$('.name'),
+                    job:$('.job'),
+                    amt:$('.amt'),
+                    msgs:$('.msgs'),
+                    input:$('.next-wrap :input'),
+                    toggler:$('.toggler'),
+                    uid:$('.uid'),
+                    step1:$('.step1'),
+                    step2:$('.step2'),
+                    next1:$('.step1 .next'),
+                    next2:$('.step2 .next'),
+                    inps:$('.step2 input[type=text]'),
+                    serialize:$('.step2 :input'),
+                    sent:$('.sent')
                 },
                 settings:{
-                    images:'images/'
+                    //base path
+                    images:'images/',
+                    //timeouts/duration
+                    time:{
+                        //initial open (timeout)
+                        iniOpen:15000,
+                        //open after closing (timeout)
+                        open:40000,
+                        //show notification (duration)
+                        notify:10000,
+                        //bot printing (duration)
+                        wait:2000,
+                        //show form after bot's second message (timeout)
+                        toForm:4000
+                    },
+                    notifyText:'Если возникнут вопросы, мы позвоним и бла бла бла',
+                    msg:{
+                        tmpl:'<div class="msg">\
+                            <div class="msg-bg theme2"></div>\
+                            <div class="msg-bd theme3"></div>\
+                            <div class="msg-tri theme3"><span></span></div>\
+                            <div class="msg-inner">\
+                                <div class="msg-h theme2 theme3">[h]</div>\
+                                <div class="msg-text">[text]</div>\
+                            </div>\
+                        </div>',
+                        text:{
+                            //bot's first message
+                            hi:'Доброго дня. Чем я могу Вам помочь?',
+                            //bot's second message
+                            suggest:'Давайте я Вам перезвоню и проконсультирую. Так будет проще и быстрее'
+                        },
+                        //header in user's message
+                        h:'Вы',
+                        //block showing while bot is printing
+                        wait:$('<div class="msg-wait">\
+                            <span></span><span></span><span></span><br/>\
+                            <div class="msg-wait-msg">Подождите, юрист пишет Вам сообщение...</div>\
+                        </div>')
+                    }
                 }
             };
         </script>

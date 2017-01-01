@@ -1,0 +1,2 @@
+1. Change css path in chat and form html
+2. Change $path in css

@@ -1,4 +1,3 @@
-otherJquerySpace = {};
 (function(ojs){
 	var oldJQuery=window.jQuery?jQuery.noConflict(true):null;
 
@@ -13,10 +12,54 @@ otherJquerySpace = {};
 		$(document).ready(function(){
 			var srcD=decodeURIComponent($('[src*="sovinformburo-chat.js"]').attr('src')),
 				data=$.deparam(srcD.substr(srcD.indexOf('?')+1)),
-				inserted,
-				pos,
+				wrap,
 				block,
-				notif;
+				iframe,
+				notify;
+
+			$('<style>\
+    .sovinformburo_chat{\
+      -webkit-transition:height .3s ease-in-out;\
+      transition:height .3s ease-in-out;\
+      height:0;\
+      position:absolute;\
+      z-index:100;\
+      bottom:0;\
+    }\
+    .sovinformburo_chat-block{\
+      overflow:hidden;\
+      height:100%;\
+			   position:relative;\
+    }\
+    .sovinformburo_chat-notify{\
+      position:absolute;\
+      bottom:100%;\
+      left:0;\
+      -webkit-transition:all .3s ease-in-out;\
+      transition:all .3s ease-in-out;\
+      margin-bottom:20px;\
+			   visibility:hidden;\
+			   opacity:0;\
+			   font:14px/19px sans-serif;\
+			   padding:4px 10px;\
+			   border-radius:6px;\
+			   width:280px\
+    }\
+    .sovinformburo_chat-notify span{\
+					position:absolute;\
+					bottom:-12px;\
+					left:10px;\
+					border-left:7px solid transparent;\
+					border-right:7px solid transparent;\
+					border-top:12px solid transparent;\
+				}\
+    .sovinformburo_chat iframe{\
+      position:absolute;\
+      top:-1000px;\
+      left:-1000px;\
+      display:block;\
+    }\
+    </style>').appendTo('head');
 
 			data.from_=window.location.href;
 			var s = window.location.search;
@@ -29,7 +72,7 @@ otherJquerySpace = {};
 				ga('create',data['g-a'],'auto');
 
 			window.addEventListener("message",function(e){
-				if(e.data&&e.data.sovinformburo)
+				if(e.data&&e.data.sovinformburo&&e.data.type=='chat')
 				{
 					if(e.data.msg)
 					{
@@ -46,25 +89,29 @@ otherJquerySpace = {};
 					}
 					if(e.data.action)
 					{
-						if(e.data.action=='minify')
-							block.height(40);
-						if(e.data.action=='restore')
-							block.height(450);
+						switch(e.data.action)
+						{
+							case 'init':
+								iframe.css('position','static').css(e.data.size);
+								wrap.css(e.data.css.wrap).height(e.data.minH);
+								block.css(e.data.css.block);
+								notify=$(e.data.notify).appendTo(wrap);
+								break;
+							case 'resize':
+								wrap.height(e.data.height);
+								break;
+							case 'notify':
+								notify.css(e.data.css);
+						}
 					}
 				}
 			},false);
 
-			if(data['p']=='l-b')
-				pos='left:'+data['sh']+'px';
-			if(data['p']=='r-b')
-				pos='right:'+data['sh']+'px';
-			inserted=$('<div class="sovinformburo_chat" style="overflow:hidden;transition:height .5s ease-in-out;height:40px;position:absolute;z-index:1;bottom:0;'+pos+'">\
-    <iframe src="'+data['bU']+'chat.html?'+$.param(data)+'" style="display:block;width:354px;height:450px;border-radius:6px 6px 0 0;" frameborder="0"></iframe></div>').appendTo($('body'));
-
-			block=inserted.filter('.sovinformburo_chat');
-			notif=$('<div class="sovinformburo_notify-pop" />').appendTo(block);
+			wrap=$('<div class="sovinformburo_chat" />').appendTo($('body'));
+			block=$('<div class="sovinformburo_chat-block" />').appendTo(wrap);
+			iframe=$('<iframe src="'+data['bU']+'chat.html?'+$.param(data)+'" frameborder="0"></iframe></div>').appendTo(block);
 		});
 	})($);
 
 	jQuery=$=oldJQuery;
-}(otherJquerySpace));
+}());
