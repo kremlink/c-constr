@@ -30,14 +30,15 @@
                 <span class="plh">Введите Ваш вопрос.<br/><br/>Пример: Недавно оказал посредническую услугу как физическое лицо. Но все пошло не так. Я пытался вернуть свои деньги, но меня обвинили в мошенничестве, и теперь грозят подать иск в суд или в прокуратуру. Как мне быть в данной ситуации?</span>
                 <textarea name="sovinformburo_msg"></textarea>
             </label>
-            <a class="next" href="">
-                <div class="next-c theme1 theme4"></div>
-                <div class="theme2 theme3 theme4"><span class="ico"></span>Получить консультацию</div>
-                <div class="theme1">Задать вопрос</div>
-            </a>
+            <span class="next">
+                <span class="next-c theme1 theme4"></span>
+                <span class="theme2 theme3 theme4"><span class="ico"></span>Получить консультацию</span>
+                <span class="theme1">Задать вопрос</span>
+            </span>
         </div>
         <div class="step2">
             <input class="uid" name="sovinformburo_userid" type="hidden" />
+            <input name="sovinformburo_type" type="hidden" value="form" />
             <div class="do">
                 Введите контактны данные. Наш юрист перезвонит Вам<br/>
                 и ответит на вопрос
@@ -48,11 +49,11 @@
             <label class="item">
                 <input type="text" name="sovinformburo_phone" placeholder="+7" maxlength="12" />
             </label>
-            <a class="next" href="">
-                <div class="next-c theme1 theme4"></div>
-                <div class="theme2 theme3 theme4"><span class="ico"></span>Получить консультацию</div>
-                <div class="theme1">Задать вопрос</div>
-            </a>
+            <span class="next">
+                <span class="next-c theme1 theme4"></span>
+                <span class="theme2 theme3 theme4"><span class="ico"></span>Получить консультацию</span>
+                <span class="theme1">Задать вопрос</span>
+            </span>
         </div>
         <div class="sent">
             Ваша форма отправлена, с вами свяжутся в ближайщее время
@@ -71,19 +72,19 @@
                     <rect class="colorize" x="2.89" y="7.74" width="0.41" height="0.52"/>
                     <polygon class="colorize" points="7.74 9.02 8.26 9.02 8.26 8.26 10.65 8.26 10.65 7.74 8.26 7.74 8.26 4.07 7.74 4.07 7.74 7.74 6.98 7.74 6.98 8.26 7.74 8.26 7.74 9.02"/>
                 </svg>
-                24/7
+                <div>24/7</div>
             </div>
             <div class="online">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16">
                     <path class="colorize" d="M12.56,7.79a1.57,1.57,0,1,1-2.22,0A1.57,1.57,0,0,1,12.56,7.79Zm2.22-2.22a0.79,0.79,0,1,0-1.11,1.11,3.13,3.13,0,0,1,0,4.44,0.79,0.79,0,0,0,1.11,1.11A4.7,4.7,0,0,0,14.78,5.57ZM17,3.35A0.79,0.79,0,0,0,15.9,4.46a6.28,6.28,0,0,1,0,8.88A0.79,0.79,0,0,0,17,14.45,7.85,7.85,0,0,0,17,3.35Zm2.22-2.22a0.79,0.79,0,0,0-1.11,1.11,9.42,9.42,0,0,1,0,13.32,0.79,0.79,0,0,0,1.11,1.11A11,11,0,0,0,19.23,1.13Zm-10,4.44a0.79,0.79,0,0,0-1.11,0,4.7,4.7,0,0,0,0,6.66,0.79,0.79,0,1,0,1.11-1.11,3.13,3.13,0,0,1,0-4.44A0.78,0.78,0,0,0,9.23,5.57ZM7,4.46A0.79,0.79,0,1,0,5.89,3.35a7.85,7.85,0,0,0,0,11.1A0.79,0.79,0,0,0,7,13.34,6.28,6.28,0,0,1,7,4.46ZM4.78,2.24A0.79,0.79,0,1,0,3.67,1.13a11,11,0,0,0,0,15.54,0.79,0.79,0,0,0,1.11-1.11A9.42,9.42,0,0,1,4.78,2.24Z" transform="translate(-0.45 -0.9)"/>
                 </svg>
-                ОНЛАЙН
+                <div>ОНЛАЙН</div>
             </div>
             <div class="phone">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <path class="colorize" d="M4.25,16.93l0.24-.08a2.25,2.25,0,0,0,1.3-1.37l0.57-2.1a2.06,2.06,0,0,0-.47-1.8l-0.76-.76a8.07,8.07,0,0,1,5.68-5.68l0.76,0.76a2.06,2.06,0,0,0,1.8.47l2.1-.57a2.25,2.25,0,0,0,1.37-1.3l0.08-.24a1.91,1.91,0,0,0-.42-1.78L15.37,1.33A2.12,2.12,0,0,0,14.59,1,13.43,13.43,0,0,0,1,14.55a2.11,2.11,0,0,0,.33.82l1.14,1.14A1.91,1.91,0,0,0,4.25,16.93Z" transform="translate(-1 -1)"/>
                 </svg>
-                ПО ТЕЛЕФОНУ
+                <div>ПО ТЕЛЕФОНУ</div>
             </div>
         </div>
         <script>
@@ -97,7 +98,6 @@
                 },
                 items:{
                     bg:$('.bg'),
-                    hdr:$('.header'),
                     img:$('.img'),
                     h:$('.h'),
                     subH:$('.sub-h'),
@@ -106,13 +106,13 @@
                     step2:$('.step2'),
                     next1:$('.step1 .next'),
                     next2:$('.step2 .next'),
-                    btnColor:$('.next-c'),
                     plh:$('.plh'),
                     ta:$('textarea'),
                     inps:$('input[type=text]'),
                     sent:$('.sent')
                 },
                 settings:{
+                    //base path
                     images:'images/'
                 }
             };

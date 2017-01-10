@@ -5,7 +5,8 @@ body {
   background: #fff;
   overflow: hidden;
   font: 14px/16px 'PT Sans', sans-serif;
-  position: relative; }
+  position: relative;
+  color: #bc3c33; }
   body.form .step1 {
     display: none; }
   body.form .step2 {
@@ -24,7 +25,6 @@ body {
     body.theme1 .header-wrap {
       height: 80px; }
     body.theme1 .header {
-      color: #fff;
       position: relative;
       padding: 0 0 4px 92px; }
     body.theme1 .img {
@@ -32,7 +32,7 @@ body {
       position: absolute;
       bottom: -30px;
       left: 16px;
-      border: 2px solid #bc3c33; }
+      border: 2px solid currentColor; }
     body.theme1 .h {
       font-weight: 700;
       padding-top: 2px; }
@@ -49,8 +49,7 @@ body {
       line-height: 44px;
       padding: 0 34px 0 20px; }
     body.theme1 .next-c {
-      border-radius: 22px;
-      background: #bc3c33; }
+      border-radius: 22px; }
     body.theme1 .footer {
       display: block; }
     body.theme1 .do {
@@ -66,7 +65,7 @@ body {
       box-shadow: inset 0 2px 0 -1px #f5f5f5; }
   body.theme2 {
     height: 415px;
-    background: url(../images/theme2-bg.jpg) no-repeat; }
+    background: url(../images/form-theme2-bg.jpg) no-repeat; }
     body.theme2.form .header-wrap {
       display: none; }
     body.theme2.form .next {
@@ -76,7 +75,6 @@ body {
     body.theme2 .header-wrap {
       height: 108px; }
     body.theme2 .header {
-      color: #fff;
       position: relative;
       padding: 18px 24px;
       text-align: center;
@@ -107,7 +105,7 @@ body {
         transform: translate(0, -50%);
         width: 25px;
         height: 30px;
-        background: url(../images/theme2-btn.png) no-repeat; }
+        background: url(../images/form-theme2-btn.png) no-repeat; }
     body.theme2 .do {
       color: #fff;
       font-size: 18px;
@@ -160,11 +158,10 @@ body {
         margin-top: 3px;
         width: 53px;
         height: 62px;
-        background: url(../images/theme3-emblem.png) no-repeat; }
+        background: url(../images/form-theme3-emblem.png) no-repeat; }
     body.theme3 .header-wrap {
       padding: 10px 24px 0 24px; }
     body.theme3 .header {
-      color: #fff;
       text-align: center;
       background: #fff; }
     body.theme3 .h {
@@ -215,7 +212,7 @@ body {
       margin-top: 60px; }
   body.theme4 {
     height: 415px;
-    background: url(../images/theme4-bg.jpg) no-repeat; }
+    background: url(../images/form-theme4-bg.jpg) no-repeat; }
     body.theme4.form .do {
       display: none; }
     body.theme4.form .item {
@@ -229,7 +226,6 @@ body {
     body.theme4 .header-wrap {
       height: 86px; }
     body.theme4 .header {
-      color: #fff;
       position: relative;
       padding: 4px 24px 12px 24px;
       text-align: center;
@@ -283,7 +279,8 @@ body {
   height: 70px;
   padding: 6px 24px 0 78px;
   font-size: 14px;
-  line-height: 16px; }
+  line-height: 16px;
+  color: #000; }
 
 .bg {
   position: absolute;
@@ -294,7 +291,8 @@ body {
   background: linear-gradient(0deg, #bc3c33, rgba(188, 60, 51, 0.7)); }
 
 .h, .sub-h {
-  position: relative; }
+  position: relative;
+  color: #fff; }
 
 .img {
   display: none; }
@@ -314,7 +312,7 @@ body {
   left: 0;
   right: 0;
   top: 0;
-  background: url(../images/loader.gif) center no-repeat; }
+  background: url(../images/form-loader.gif) center no-repeat; }
 
 .sent {
   margin-top: 50px;
@@ -354,8 +352,7 @@ textarea {
 .next {
   position: absolute;
   right: 24px;
-  color: #fff;
-  text-decoration: none; }
+  cursor: pointer; }
   .next:after {
     content: '';
     position: absolute;
@@ -368,15 +365,17 @@ textarea {
     height: 12px;
     border-top: 1px solid #fff;
     border-right: 1px solid #fff; }
-  .next div:not(.next-c) {
-    position: relative; }
+  .next span:not(.next-c) {
+    position: relative;
+    color: #fff; }
 
 .next-c {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0; }
+  bottom: 0;
+  background: currentColor; }
 
 input[type=text] {
   padding-left: 9px;
@@ -408,7 +407,7 @@ input[type=text] {
   position: relative; }
 
 .colorize {
-  fill: #bc3c33; }
+  fill: currentColor; }
 
 .always {
   padding-left: 24px; }
@@ -419,6 +418,8 @@ input[type=text] {
   top: 4px;
   width: 16px;
   height: 16px; }
+.always div, .online div, .phone div {
+  color: #000; }
 
 .online {
   padding-left: 32px;
