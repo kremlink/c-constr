@@ -241,13 +241,12 @@ body {
     body.theme4 .about {
       padding-left: 78px;
       width: 262px;
-      margin-top: 24px;
       font-weight: 700;
       color: #fff;
       min-height: 62px;
       position: absolute;
       left: 22px;
-      top: 296px; }
+      top: 328px; }
     body.theme4 .item {
       margin: 15px 0 0 210px; }
     body.theme4 textarea {
