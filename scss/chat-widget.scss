@@ -58,7 +58,7 @@ body{
       visibility:visible;
     }
     .next{
-      top:190px;
+      top:270px;
     }
     .next-bg{
       height:38px;
@@ -366,10 +366,10 @@ body{
     .next-wrap{
       left:18px;
       right:18px;
-      bottom:50px;
+      bottom:58px;
       textarea{
         display:block;
-        height:74px;
+        height:66px;
       }
     }
     .form-item input{
@@ -586,12 +586,12 @@ body{
   font-size:13px;
   color:#9e9e9e;
   line-height:16px;
-  background:url(#{$path}theme2-emblem.png) no-repeat;
+  background:url(#{$path}theme2-emblem.png) 0 center no-repeat;
   min-height:32px;
   padding:2px 32px 0 38px;
   left:18px;
   right:0;
-  bottom:10px;
+  bottom:6px;
 }
 .msgs-wrap{
   overflow:hidden;

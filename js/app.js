@@ -23,6 +23,12 @@
   colorInps:null,
   inserted:{},
   init:function(){
+   //set localization for colorpicker
+   $.extend($.fn.spectrum.defaults,$.spectrum.localization["ru"]={
+    cancelText:"отмена",
+    chooseText:"выбрать"
+   });
+
    //set all used DOM items
    props=mgr.props;
    props.blocks=$(els.blocks.items);

@@ -9,13 +9,13 @@
             <main class="constr-cont">
                 <div class="constr-choose">
                     <div class="constr-h1">Настройка виджета</div>
-                    <div class="constr-b">Тематика — <span class="constr-highlight">Юридические услуги</span></div>
+                    <!--<div class="constr-b">Тематика — <span class="constr-highlight">Юридические услуги</span></div>-->
                     <div class="constr-b">URL подключаемого сайта</div>
                     <input data-data='{"for":["chat","form"],"name":"u"}' placeholder="Укажите URL без www и http://" type="text" value="" />
                     <div class="constr-b">Рекламная форма</div>
                     <select class="constr-type"></select>
                     <div class="constr-block constr-type-block" data-type="chat">
-                        <div class="constr-b">Вид формы</div>
+                        <div class="constr-b">Дизайн чата</div>
                         <select data-data='{"for":["chat"],"name":"ch-th","alias":"th"}'></select>
                         <div class="constr-b">Готовое цветовое решение</div>
                         <select data-data='{"for":["chat"],"name":"ch-r"}'></select>
@@ -26,7 +26,7 @@
                         <input data-data='{"for":["chat"],"name":"sh","valid":"\\S+"}' type="text" value="0" />
                     </div>
                     <div class="constr-type-block" data-type="form">
-                        <div class="constr-b">Вид формы</div>
+                        <div class="constr-b">Дизайн формы</div>
                         <select data-data='{"for":["form"],"name":"f-th","alias":"th"}'></select>
                         <div class="constr-b">Готовое цветовое решение</div>
                         <select data-data='{"for":["form"],"name":"f-r"}'></select>
@@ -56,18 +56,18 @@
                     <div class="constr-block constr-type-block" data-type="chat">
                         <div class="constr-h1">Содержимое виджета</div>
                         <div class="constr-b">Имя юриста</div>
-                        <input data-data='{"for":["chat"],"name":"n","valid":"\\S+"}' type="text" value="Имя юриста" />
+                        <input data-data='{"for":["chat"],"name":"n","valid":"\\S+"}' type="text" value="Андрей Сергеевич" />
                         <div class="constr-b">Должность</div>
-                        <input data-data='{"for":["chat"],"name":"j","valid":"\\S+"}' type="text" value="Должность" />
+                        <input data-data='{"for":["chat"],"name":"j","valid":"\\S+"}' type="text" value="Юрист-консультант" />
                         <div class="constr-b">Выбор фотографии</div>
                         <select data-data='{"for":["chat"],"name":"ch-ph","alias":"ph"}'></select>
                     </div>
                     <div class="constr-block constr-type-block" data-type="form">
                         <div class="constr-h1">Содержимое формы</div>
                         <div class="constr-b">Заголовок</div>
-                        <input data-data='{"for":["form"],"name":"h","valid":"\\S+"}' type="text" value="Заголовок" />
+                        <input data-data='{"for":["form"],"name":"h","valid":"\\S+"}' type="text" value="Бесплатная консультация" />
                         <div class="constr-b">Подзаголовок</div>
-                        <input data-data='{"for":["form"],"name":"s-h","valid":"\\S+"}' type="text" value="ползаголовок и т.д." />
+                        <input data-data='{"for":["form"],"name":"s-h","valid":"\\S+"}' type="text" value="Задайте вопрос" />
                         <div class="constr-b">Выбор фотографии</div>
                         <select data-data='{"for":["form"],"name":"f-ph","alias":"ph"}'></select>
                     </div>
@@ -101,8 +101,9 @@
                         type:{
                             item:'.constr-type',
                             options:[
-                                {value:'chat',text:'Чат',uid:54321,base:'js/sovinformburo-chat.js?'},
-                                {value:'form',text:'Форма',uid:54321,base:'js/sovinformburo-form.js?'}
+
+                                {value:'form',text:'Форма',uid:54321,base:'js/sovinformburo-form.js?'},
+                                {value:'chat',text:'Чат',uid:54321,base:'js/sovinformburo-chat.js?'}
                             ]
                         },
                         ctrls:{
@@ -116,10 +117,10 @@
                             },
                             //theme select data
                             'ch-th':{
-                                options:[{value:'theme1',text:'Theme1'},{value:'theme2',text:'Theme2'},{value:'theme3',text:'Theme3'}]
+                                options:[{value:'theme1',text:'Дизайн 1'},{value:'theme2',text:'Дизайн 2'},{value:'theme3',text:'Дизайн 3'}]
                             },
                             'f-th':{
-                                options:[{value:'theme1:0|440',text:'Theme1'},{value:'theme2:598|415',text:'Theme2'},{value:'theme3:0|415',text:'Theme3'},{value:'theme4:598|415',text:'Theme4'}]
+                                options:[{value:'theme4:598|415',text:'Дизайн 4'},{value:'theme1:0|440',text:'Дизайн 1'},{value:'theme2:598|415',text:'Дизайн 2'},{value:'theme3:0|415',text:'Дизайн 3'}]
                             },
                             //color set select data
                             'ch-r':{

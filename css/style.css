@@ -483,7 +483,7 @@ table {
 .constr-result {
   -webkit-flex: 1;
   flex: 1;
-  padding: 15px;
+  padding: 0 15px 15px 0;
   background: #e8e8e8;
   overflow: hidden; }
 
@@ -498,7 +498,7 @@ table {
   height: 100%; }
 
 .constr-out-wrap {
-  margin: 20px 15px 0 0;
+  margin: 20px 15px 0 10px;
   font: 14px/20px "Open Sans", sans-serif;
   word-wrap: break-word; }
 

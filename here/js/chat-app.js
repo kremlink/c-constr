@@ -107,15 +107,17 @@
    items.next2.on('click',function(e){
     var v1=$.trim(items.inps.eq(0).val()),
      v2=$.trim(items.inps.eq(1).val()),
+     v3=$.trim(items.inps.eq(2).val()),
      i1=true,
      i2=true,
+     i3=true,
      m_data;
 
     //validate
-    if(!v1)
+    if(!v1||!v3)
     {
-     i1=false;
-     items.inps.eq(0).addClass(cls.err);
+     !v1?i1=false:i3=false;
+     items.inps.eq(!v1?0:2).addClass(cls.err);
     }
     if(!/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/.test(v2))
     {
@@ -123,7 +125,7 @@
      items.inps.eq(1).addClass(cls.err);
     }
 
-    if(i1&&i2)
+    if(i1&&i2&&i3)
     {
      items.step2.addClass(cls.loading);
 

@@ -39,14 +39,21 @@
                     <span class="form-item-h">Ваше имя</span>
                     <span class="form-input">
                         <span class="form-item-bd theme3"></span>
-                        <input type="text" name="sovinformburo_name" placeholder="Иван Иванович" />
+                        <input type="text" name="sovinformburo_name" placeholder="Андрей Сергеевич" />
                     </span>
                 </label>
                 <label class="form-item phone">
                     <span class="form-item-h">Контактный телефон</span>
                     <span class="form-input">
                         <span class="form-item-bd theme3"></span>
-                        <input type="text" name="sovinformburo_phone" placeholder="9161111111" maxlength="10" />
+                        <input type="text" name="sovinformburo_phone" placeholder="(999)999-99-99" maxlength="10" />
+                    </span>
+                </label>
+                <label class="form-item">
+                    <span class="form-item-h">Город</span>
+                    <span class="form-input">
+                        <span class="form-item-bd theme3"></span>
+                        <input type="text" name="sovinformburo_city" placeholder="Москва" />
                     </span>
                 </label>
                 <span class="next">
@@ -54,9 +61,9 @@
                 </span>
             </div>
             <div class="sent">
-                Спасибо за обращение! Юрист свяжется с Вами в течение 10 минут
+                Спасибо, Ваша заявка принята. Юрист перезвонит и проконсультирует Вас в течение 15 минут.
             </div>
-            <div class="info theme2">Тут будет написано что-то про закон. бла бла бла</div>
+            <div class="info theme2">В рамках ФЗ РФ от 21 ноября 2011 г. N 324-ФЗ «О бесплатной юридической помощи в Российской Федерации»</div>
         </div>
         <a class="toggler" href=""></a>
         <script>
@@ -102,9 +109,9 @@
                         //bot printing (duration)
                         wait:2000,
                         //show form after bot's second message (timeout)
-                        toForm:4000
+                        toForm:5000
                     },
-                    notifyText:'Если возникнут вопросы, мы позвоним и бла бла бла',
+                    notifyText:'Если потребуется консультация - обращайтесь!',
                     msg:{
                         tmpl:'<div class="msg">\
                             <div class="msg-bg theme2"></div>\
@@ -117,7 +124,7 @@
                         </div>',
                         text:{
                             //bot's first message
-                            hi:'Доброго дня. Чем я могу Вам помочь?',
+                            hi:'Добрый день! Я дежурный юрист-консультант. Чем могу помочь? Задайте вопрос и я Вас проконсультирую. Консультация бесплатна',
                             //bot's second message
                             suggest:'Давайте я Вам перезвоню и проконсультирую. Так будет проще и быстрее'
                         },

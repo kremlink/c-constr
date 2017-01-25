@@ -82,7 +82,7 @@
 }
 .constr-result{
   @include flx(flex,1);
-  padding:15px;
+  padding:0 15px 15px 0;
   background:getc(bg);
   overflow:hidden;
 }
@@ -97,7 +97,7 @@
   height:100%;
 }
 .constr-out-wrap{
-  margin:20px 15px 0 0;
+  margin:20px 15px 0 10px;
   font:14px/20px font();
   word-wrap:break-word;
 }
