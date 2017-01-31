@@ -120,14 +120,14 @@
                                 options:[{value:'theme1',text:'Дизайн 1'},{value:'theme2',text:'Дизайн 2'},{value:'theme3',text:'Дизайн 3'}]
                             },
                             'f-th':{
-                                options:[{value:'theme4:598|415',text:'Дизайн 4'},{value:'theme1:0|440',text:'Дизайн 1'},{value:'theme2:598|415',text:'Дизайн 2'},{value:'theme3:0|415',text:'Дизайн 3'}]
+                                options:[{value:'theme4:598|415',text:'Дизайн 1'},{value:'theme1:0|440',text:'Дизайн 2'},{value:'theme2:598|415',text:'Дизайн 3'},{value:'theme3:0|415',text:'Дизайн 4'}]
                             },
                             //color set select data
                             'ch-r':{
-                                options:[{value:'#bc3c33,#fff',text:'Бордово-белое'},{value:'#0f0,#fff',text:'Зелено-белое'}]
+                                options:[{value:'#5e6465,#fff',text:'Серо-белый'},{value:'#374e75,#fff',text:'Сине-белый'},{value:'#377641,#fff',text:'Зелено-белый'}]
                             },
                             'f-r':{
-                                options:[{value:'#bc3c33,#fff',text:'Бордово-белое'},{value:'#f00,#00f',text:'Красно-синее'},{value:'#0f0,#fff',text:'Зелено-белое'}]
+                                options:[{value:'#6f2a2c,#fff',text:'Бордово-белое'},{value:'#32406d,#fff',text:'Сине-белый'},{value:'#0d4902,#fff',text:'Зелено-белый'}]
                             },
                             //photo select data
                             'ch-ph':{
@@ -153,8 +153,8 @@
                         baseUrl:'here/',
                         //don't add these elements' values to src
                         omit:['u','ch-r','f-r'],
-                        //do nothing when changing these elements' values
-                        ignore:['ch-r','f-r']
+                        //color themes
+                        cTheme:['ch-r','f-r']
                     }
                 }
             };

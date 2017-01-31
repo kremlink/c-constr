@@ -21,6 +21,7 @@
   sels:$(els.ctrls.items).filter('select'),
   inps:$(els.ctrls.items).filter('input'),
   colorInps:null,
+  colorSels:null,
   inserted:{},
   init:function(){
    //set localization for colorpicker
@@ -37,10 +38,15 @@
    props.ext=$(els.dest.external);
    props.output=$(els.output);
 
+   mgr.colorSels=mgr.sels.filter(function(){
+    var d=$(this).data(els.ctrls.data);
+
+    return ~data.cTheme.indexOf(d.name);
+   });
+
    mgr.colorInps=mgr.inps.filter(function(){
     return $(this).data(els.ctrls.data).color;
    }).spectrum({
-    color:this.value,
     showInput:true,
     preferredFormat:"hex",
     change:function(){
@@ -136,6 +142,8 @@
     mgr.data[mgr.name]['b_']=els.type.options[mgr.index]['base'];
     mgr.data[mgr.name]['uid_']=els.type.options[mgr.index]['uid'];
 
+    mgr.setColors();
+
     mgr.selectChange(mgr.type);
    });
 
@@ -154,18 +162,12 @@
     });
    });
 
-   mgr.sels.filter(function(){
-    var d=$(this).data(els.ctrls.data);
-
-    return ~data.ignore.indexOf(d.name);
-   }).on('change',function(){
+   mgr.colorSels.on('change',function(){
     var c=$(this).val().split(',');
 
     mgr.colorInps.each(function(i){
      $(this).spectrum('set',c[i]);
     });
-   }).each(function(){
-    $(this).trigger('change');
    });
 
    mgr.sels.on('change',function(){
@@ -174,6 +176,12 @@
 
    //choose first widget
    mgr.type.trigger('change');
+  },
+  //set colors
+  setColors:function(){
+   mgr.colorSels.filter(function(){
+    return ~$(this).data(els.ctrls.data).for.indexOf(mgr.name);
+   }).trigger('change');
   },
   //set inputs event listeners
   setInputs:function(){
