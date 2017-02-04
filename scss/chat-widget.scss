@@ -46,7 +46,7 @@ body{
   height:450px;
   position:relative;
   font:16px/19px 'PT Sans', sans-serif;
-  background:linear-gradient(0deg,$color,rgba($color,0.7));
+  background:linear-gradient(180deg,$color,rgba($color,0.8)),#000;
   color:$color;
   &.form{
     .step1{

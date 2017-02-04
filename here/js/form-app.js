@@ -37,7 +37,7 @@
    if(mgr.data['bg-c'])
    {
     body.css('color',mgr.data['bg-c']);
-    items.bg.css('background','linear-gradient(0deg,'+mgr.data['bg-c']+',rgba('+rgba+',0.7))');
+    items.bg.css('background','linear-gradient(180deg,'+mgr.data['bg-c']+',rgba('+rgba+',0.8)),#000');
    }
 
    items.img.attr('src',sts.images+mgr.data['ph']);

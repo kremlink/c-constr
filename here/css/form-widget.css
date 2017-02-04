@@ -287,7 +287,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background: linear-gradient(0deg, #bc3c33, rgba(188, 60, 51, 0.7)); }
+  background: linear-gradient(180deg, #bc3c33, rgba(188, 60, 51, 0.8)), #000; }
 
 .h, .sub-h {
   position: relative;

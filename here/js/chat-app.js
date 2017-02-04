@@ -72,7 +72,7 @@
 
    items.uid.val(mgr.data['uid_']);
 
-   body.addClass(mgr.data['th']).css({color:mgr.data['bg-c'],background:'linear-gradient(0deg,'+mgr.data['bg-c']+',rgba('+rgba+',0.7))'});
+   body.addClass(mgr.data['th']).css({color:mgr.data['bg-c'],background:'linear-gradient(180deg,'+mgr.data['bg-c']+',rgba('+rgba+',0.8)),#000'});
 
    items.face.css('background-image','url('+sts.images+mgr.data['ph']+')');
    items.name.text(mgr.data['n']).css('color',mgr.data['t-c']);
@@ -93,6 +93,8 @@
 
    //either input or textarea
    items.input=items.input.filter('.'+mgr.data['th']);
+
+   items.amt.text(1);//simplae logic; now active
 
    mgr.setControls();
    mgr.setForm();
@@ -186,7 +188,7 @@
    if(mgr.opened)
    {
     //don't show notifications while mgr.opened
-    body.removeClass(cls.hasNotif);
+    //body.removeClass(cls.hasNotif);//complex logic; now hidden
     //if bot already added his first message, set amount of unseen messages to 0
     if(mgr.bot['hi'].f)
      mgr.bot.unseen=0;
@@ -209,8 +211,8 @@
      //if chat is closed
      if(!mgr.opened)
      {
-      body.addClass(cls.hasNotif);
-      items.amt.text(++mgr.bot.unseen);
+      //body.addClass(cls.hasNotif);//complex logic; now hidden
+      //items.amt.text(++mgr.bot.unseen);//complex logic; now hidden
      }
 
      if(what=='hi'||what!='hi'&&mgr.opened)
@@ -238,6 +240,7 @@
     {
      clearTimeout(mgr.time.open);
      clearTimeout(mgr.time.notify);
+     body.removeClass(cls.hasNotif);//simple logic; now active
      mgr.hideNotif();
     }else
     {
@@ -248,6 +251,8 @@
        mgr.toggle();
        mgr.hideNotif();
       },sts.time.open);
+
+      body.addClass(cls.hasNotif);//simple logic; now active
 
       parent.postMessage({
        type:'chat',
@@ -285,8 +290,11 @@
 
    //add message
    items.input.on('keypress',function(e){
-    if(e.which==13&&items.input.is('input'))
+    if(e.which==13/*&&items.input.is('input')*/)
+    {
      mgr.addMsg({cls:cls.me,text:items.input.val()});
+     return false;
+    }
    });
   },
   //add message
