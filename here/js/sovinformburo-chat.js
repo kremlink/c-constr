@@ -83,7 +83,7 @@
 							ga('send',{
 								hitType:'event',
 								eventCategory:'sovinformburo',
-								eventAction:'sent_'+e.data.msg
+								eventAction:e.data.msg
 							});
 						}
 					}
