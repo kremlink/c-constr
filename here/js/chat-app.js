@@ -42,7 +42,26 @@
   sent:false,
   init:function(){
    //css
-   var css='<style>\
+   var css,
+    //rgba-ize the color
+    rgba=parseInt(mgr.data['bg-c'].substring(1,3),16)+','+parseInt(mgr.data['bg-c'].substring(3,5),16)+','+parseInt(mgr.data['bg-c'].substring(5,7),16),
+    //notifier bg color
+    bg='none';
+
+   if(mgr.data['th']=='theme2')
+    bg='#78e883';
+   if(mgr.data['th']=='theme3')
+    bg='#6ed8ff';
+
+   //for convenience
+   items=mgr.items;
+   cls=mgr.cls;
+   sts=mgr.settings;
+
+   mgr.size.w=354;
+   mgr.size.h=450;
+
+   css='<style>\
     .sovinformburo_chat{\
       -webkit-transition:height .3s ease-in-out;\
       transition:height .3s ease-in-out;\
@@ -50,7 +69,7 @@
       position:absolute;\
       z-index:100;\
       bottom:0;\
-      '+(!mgr.data['res_']||mgr.data['res_']>720?(mgr.data['p']=='l-b'?'left:':'right:')+mgr.data['sh']+'px;':'left:50%;')+'\
+      '+(!mgr.data['res_']||mgr.data['res_']>720?(mgr.data['p']=='l-b'?'left:':'right:')+mgr.data['sh']+'px;':'left:50%;margin-left:-'+mgr.size.w/2+'px;')+'\
     }\
     .sovinformburo_chat-block{\
       overflow:hidden;\
@@ -80,24 +99,7 @@
 					border-right:7px solid transparent;\
 					border-top:12px solid transparent;\
 				}\
-    </style>',
-    //rgba-ize the color
-    rgba=parseInt(mgr.data['bg-c'].substring(1,3),16)+','+parseInt(mgr.data['bg-c'].substring(3,5),16)+','+parseInt(mgr.data['bg-c'].substring(5,7),16),
-    //notifier bg color
-    bg='none';
-
-   if(mgr.data['th']=='theme2')
-    bg='#78e883';
-   if(mgr.data['th']=='theme3')
-    bg='#6ed8ff';
-
-   //for convenience
-   items=mgr.items;
-   cls=mgr.cls;
-   sts=mgr.settings;
-
-   mgr.size.w=354;
-   mgr.size.h=450;
+    </style>';
 
    items.uid.val(mgr.data['uid_']);
 
