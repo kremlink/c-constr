@@ -41,21 +41,50 @@
   //is set to true when the form has been successfully sent
   sent:false,
   init:function(){
-   //css for outer wrap and block
-   var css={wrap:{},block:{}},
+   //css
+   var css='<style>\
+    .sovinformburo_chat{\
+      -webkit-transition:height .3s ease-in-out;\
+      transition:height .3s ease-in-out;\
+      height:0;\
+      position:absolute;\
+      z-index:100;\
+      bottom:0;\
+      '+(!mgr.data['res_']||mgr.data['res_']>720?(mgr.data['p']=='l-b'?'left:':'right:')+mgr.data['sh']+'px;':'left:50%;')+'\
+    }\
+    .sovinformburo_chat-block{\
+      overflow:hidden;\
+      height:100%;\
+			   position:relative;\
+			   '+(mgr.data['th']=='theme1'?'border-radius:22px 0 0 0;':'border-radius:6px 6px 0 0;')+'\
+    }\
+    .sovinformburo_chat-notify{\
+      position:absolute;\
+      bottom:100%;\
+      left:0;\
+      -webkit-transition:all .3s ease-in-out;\
+      transition:all .3s ease-in-out;\
+      margin-bottom:20px;\
+			   visibility:hidden;\
+			   opacity:0;\
+			   font:14px/19px sans-serif;\
+			   padding:4px 10px;\
+			   border-radius:6px;\
+			   width:280px\
+    }\
+    .sovinformburo_chat-notify span{\
+					position:absolute;\
+					bottom:-12px;\
+					left:10px;\
+					border-left:7px solid transparent;\
+					border-right:7px solid transparent;\
+					border-top:12px solid transparent;\
+				}\
+    </style>',
     //rgba-ize the color
     rgba=parseInt(mgr.data['bg-c'].substring(1,3),16)+','+parseInt(mgr.data['bg-c'].substring(3,5),16)+','+parseInt(mgr.data['bg-c'].substring(5,7),16),
     //notifier bg color
     bg='none';
-
-   if(mgr.data['p']=='l-b')
-    css.wrap.left=mgr.data['sh']+'px';
-   if(mgr.data['p']=='r-b')
-    css.wrap.right=mgr.data['sh']+'px';
-
-   if(mgr.data['th']=='theme1')
-    css.block.borderRadius='22px 0 0 0';else
-    css.block.borderRadius='6px 6px 0 0';
 
    if(mgr.data['th']=='theme2')
     bg='#78e883';
@@ -95,6 +124,8 @@
    items.input=items.input.filter('.'+mgr.data['th']);
 
    items.amt.text(1);//simplae logic; now active
+
+   items.phone.mask('(999)999-99-99',{placeholder:'_'});
 
    mgr.setControls();
    mgr.setForm();
@@ -286,6 +317,7 @@
    //add message
    items.next1.on('click',function(){
     mgr.addMsg({cls:cls.me,text:items.input.val()});
+    items.input.val('')[0].focus();
    });
 
    //add message
@@ -293,6 +325,7 @@
     if(e.which==13/*&&items.input.is('input')*/)
     {
      mgr.addMsg({cls:cls.me,text:items.input.val()});
+     items.input.val('')[0].focus();
      return false;
     }
    });
@@ -304,6 +337,9 @@
     //insert data into message
     items.msgs.append($(sts.msg.tmpl.replace('[h]',opts.cls?sts.msg.h:mgr.data['n'])
      .replace('[text]',opts.cls?opts.text:sts.msg.text[opts.type])).addClass(opts.cls));
+
+    items.sound[0].currentTime=0;
+    items.sound[0].play();
 
     //if human
     if(opts.cls)

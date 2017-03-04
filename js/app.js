@@ -67,9 +67,9 @@
      {
       case 'init':
        mgr.inserted.iframe.css('position','static').css(e.data.size);
-       mgr.inserted.wrap.css(e.data.css.wrap).height(e.data.minH);
-       mgr.inserted.block.css(e.data.css.block);
+       mgr.inserted.wrap.height(e.data.minH);
        mgr.inserted.notify=$(e.data.notify).appendTo(mgr.inserted.wrap);
+       mgr.inserted.wrap=mgr.inserted.wrap.add($(e.data.css).appendTo('head'));
        break;
       case 'resize':
        mgr.inserted.wrap.height(e.data.height);
@@ -111,7 +111,7 @@
    {
     mgr.inserted.wrap=$('<div class="sovinformburo_chat" />').appendTo(props.into);
     mgr.inserted.block=$('<div class="sovinformburo_chat-block" />').appendTo(mgr.inserted.wrap);
-    mgr.inserted.iframe=$('<iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" frameborder="0"></iframe></div>').appendTo(mgr.inserted.block);
+    mgr.inserted.iframe=$('<iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" frameborder="0" style="position:absolute;top:-1000px;left:-1000px;display:block;"></iframe>').appendTo(mgr.inserted.block);
 
     props.output.text('<script src="'+mgr.data[mgr.name]['bU']+base+param+'"></script>');
    }

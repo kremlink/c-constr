@@ -664,4 +664,9 @@ input, textarea {
   bottom: 0;
   pointer-events: none; }
 
+.sound {
+  position: absolute;
+  left: 0;
+  top: -500px; }
+
 /*# sourceMappingURL=chat-widget.css.map */

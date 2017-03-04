@@ -6,6 +6,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="js/jquery-deparam.js"></script>
         <script src="js/jquery.mousewheel.js"></script>
+        <script src="js/jquery.maskedinput.js"></script>
     </head>
     <body>
         <div class="hdr">
@@ -66,6 +67,7 @@
             <div class="info theme2">В рамках ФЗ РФ от 21 ноября 2011 г. N 324-ФЗ «О бесплатной юридической помощи в Российской Федерации»</div>
         </div>
         <a class="toggler" href=""></a>
+        <audio class="sound" src="consult-widget-sound.mp3"></audio>
         <script>
             var app={
                 cls:{
@@ -93,7 +95,9 @@
                     next2:$('.step2 .next'),
                     inps:$('.step2 input[type=text]'),
                     serialize:$('.step2 :input'),
-                    sent:$('.sent')
+                    phone:$('.phone input'),
+                    sent:$('.sent'),
+                    sound:$('.sound')
                 },
                 settings:{
                     //base path

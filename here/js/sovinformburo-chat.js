@@ -17,56 +17,14 @@
 				iframe,
 				notify;
 
-			$('<style>\
-    .sovinformburo_chat{\
-      -webkit-transition:height .3s ease-in-out;\
-      transition:height .3s ease-in-out;\
-      height:0;\
-      position:absolute;\
-      z-index:100;\
-      bottom:0;\
-    }\
-    .sovinformburo_chat-block{\
-      overflow:hidden;\
-      height:100%;\
-			   position:relative;\
-    }\
-    .sovinformburo_chat-notify{\
-      position:absolute;\
-      bottom:100%;\
-      left:0;\
-      -webkit-transition:all .3s ease-in-out;\
-      transition:all .3s ease-in-out;\
-      margin-bottom:20px;\
-			   visibility:hidden;\
-			   opacity:0;\
-			   font:14px/19px sans-serif;\
-			   padding:4px 10px;\
-			   border-radius:6px;\
-			   width:280px\
-    }\
-    .sovinformburo_chat-notify span{\
-					position:absolute;\
-					bottom:-12px;\
-					left:10px;\
-					border-left:7px solid transparent;\
-					border-right:7px solid transparent;\
-					border-top:12px solid transparent;\
-				}\
-    .sovinformburo_chat iframe{\
-      position:absolute;\
-      top:-1000px;\
-      left:-1000px;\
-      display:block;\
-    }\
-    </style>').appendTo('head');
-
 			data.from_=window.location.href;
 			var s = window.location.search;
 			s = s.match(new RegExp('tduid' + '=([^&=]+)'));
 			var tduid = s ? s[1] : false;
 			if(tduid)
 				data.tduid_=tduid;
+
+			data.res_=$(window).width();
 
 			if(data['g-a']&&window.ga)
 				ga('create',data['g-a'],'auto');
@@ -92,9 +50,9 @@
 						switch(e.data.action)
 						{
 							case 'init':
+								$(e.data.css).appendTo('head');
 								iframe.css('position','static').css(e.data.size);
-								wrap.css(e.data.css.wrap).height(e.data.minH);
-								block.css(e.data.css.block);
+								wrap.height(e.data.minH);
 								notify=$(e.data.notify).appendTo(wrap);
 								break;
 							case 'resize':
@@ -109,7 +67,7 @@
 
 			wrap=$('<div class="sovinformburo_chat" />').appendTo($('body'));
 			block=$('<div class="sovinformburo_chat-block" />').appendTo(wrap);
-			iframe=$('<iframe src="'+data['bU']+'chat.html?'+$.param(data)+'" frameborder="0"></iframe></div>').appendTo(block);
+			iframe=$('<iframe src="'+data['bU']+'chat.html?'+$.param(data)+'" frameborder="0" style="position:absolute;top:-1000px;left:-1000px;display:block;"></iframe>').appendTo(block);
 		});
 	})($);
 

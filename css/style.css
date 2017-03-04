@@ -539,45 +539,4 @@ table {
 .sp-input {
   background: #fff; }
 
-.sovinformburo_chat {
-  -webkit-transition: height .3s ease-in-out;
-  transition: height .3s ease-in-out;
-  z-index: 100;
-  height: 0;
-  position: absolute;
-  bottom: 0; }
-  .sovinformburo_chat iframe {
-    position: absolute;
-    left: -1000px;
-    top: -1000px;
-    display: block; }
-
-.sovinformburo_chat-block {
-  overflow: hidden;
-  height: 100%;
-  position: relative; }
-
-.sovinformburo_chat-notify {
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  margin-bottom: 20px;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font: 14px/19px sans-serif;
-  width: 280px; }
-
-.sovinformburo_chat-notify span {
-  position: absolute;
-  bottom: -12px;
-  left: 10px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 12px solid transparent; }
-
 /*# sourceMappingURL=style.css.map */
