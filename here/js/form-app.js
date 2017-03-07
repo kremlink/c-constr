@@ -44,6 +44,8 @@
    items.h.text(mgr.data['h']).css('color',mgr.data['t-c']);
    items.subH.text(mgr.data['s-h']).css('color',mgr.data['t-c']);
 
+   items.phone.mask('(999)999-99-99',{placeholder:'_'});
+
    //set some listeners for interface
    items.ta.on('focus',function(){
     items.plh.addClass(cls.hidden);

@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="css/form-widget.css" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="js/jquery-deparam.js"></script>
+        <script src="js/jquery.maskedinput.js"></script>
     </head>
     <body>
         <div class="top-text theme2">
@@ -47,7 +48,7 @@
                 <input type="text" name="sovinformburo_name" placeholder="Иван Иванович" />
             </label>
             <label class="item">
-                <input type="text" name="sovinformburo_phone" placeholder="8999 999 99 99" />
+                <input class="masked" type="text" name="sovinformburo_phone" placeholder="(999)999-99-99" />
             </label>
             <span class="next">
                 <span class="next-c theme1 theme4"></span>
@@ -109,6 +110,7 @@
                     plh:$('.plh'),
                     ta:$('textarea'),
                     inps:$('input[type=text]'),
+                    phone:$('.masked'),
                     sent:$('.sent')
                 },
                 settings:{

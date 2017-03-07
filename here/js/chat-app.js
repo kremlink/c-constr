@@ -26,6 +26,9 @@
   bot:{
    //f - added message flag
    hi:{
+    f:false
+   },
+   ask:{
     f:false,
     d:$.Deferred()
    },
@@ -66,7 +69,7 @@
       -webkit-transition:height .3s ease-in-out;\
       transition:height .3s ease-in-out;\
       height:0;\
-      position:absolute;\
+      position:fixed;\
       z-index:100;\
       bottom:0;\
       '+(!mgr.data['res_']||mgr.data['res_']>720?(mgr.data['p']=='l-b'?'left:':'right:')+mgr.data['sh']+'px;':'left:50%;margin-left:-'+mgr.size.w/2+'px;')+'\
@@ -125,7 +128,8 @@
    //either input or textarea
    items.input=items.input.filter('.'+mgr.data['th']);
 
-   items.amt.text(1);//simplae logic; now active
+   items.amt.text(1);//simple logic; now active
+   mgr.botWrites('hi');
 
    items.phone.mask('(999)999-99-99',{placeholder:'_'});
 
@@ -216,14 +220,14 @@
 
    mgr.opened=!mgr.opened;
 
-   mgr.botWrites('hi');
+   mgr.botWrites('ask');
 
    if(mgr.opened)
    {
     //don't show notifications while mgr.opened
     //body.removeClass(cls.hasNotif);//complex logic; now hidden
     //if bot already added his first message, set amount of unseen messages to 0
-    if(mgr.bot['hi'].f)
+    if(mgr.bot['ask'].f)
      mgr.bot.unseen=0;
 
     //if bot added his final message while chat was closed
@@ -232,6 +236,13 @@
    }
   },
   botWrites:function(what){
+   //initial message
+   if(what=='hi'&&!mgr.bot[what].f)
+   {
+    mgr.addMsg({type:what});
+    mgr.bot[what].f=true;
+   }
+
    //if bot didn't add that message
    if(!mgr.bot[what].f)
    {
@@ -248,7 +259,7 @@
       //items.amt.text(++mgr.bot.unseen);//complex logic; now hidden
      }
 
-     if(what=='hi'||what!='hi'&&mgr.opened)
+     if(what=='ask'||what!='ask'&&mgr.opened)
       mgr.bot[what].d.resolve();
     },sts.time.wait);
 
@@ -348,7 +359,7 @@
     {
      //save message
      mgr.msgs.push(opts.text);
-     $.when(mgr.bot['hi'].d).then(function(){
+     $.when(mgr.bot['ask'].d).then(function(){
       mgr.botWrites('suggest');
       $.when(mgr.bot['suggest'].d).then(function(){
        setTimeout(function(){

@@ -47,7 +47,7 @@
                     <span class="form-item-h">Контактный телефон</span>
                     <span class="form-input">
                         <span class="form-item-bd theme3"></span>
-                        <input type="text" name="sovinformburo_phone" placeholder="(999)999-99-99" />
+                        <input class="masked" type="text" name="sovinformburo_phone" placeholder="(999)999-99-99" />
                     </span>
                 </label>
                 <label class="form-item">
@@ -62,7 +62,7 @@
                 </span>
             </div>
             <div class="sent">
-                Спасибо, Ваша заявка принята. Юрист перезвонит и проконсультирует Вас в течение 15 минут.
+                Ваша заявка принята. Юрист перезвонит и проконсультирует Вас
             </div>
             <div class="info theme2">В рамках ФЗ РФ от 21 ноября 2011 г. N 324-ФЗ «О бесплатной юридической помощи в Российской Федерации»</div>
         </div>
@@ -95,7 +95,7 @@
                     next2:$('.step2 .next'),
                     inps:$('.step2 input[type=text]'),
                     serialize:$('.step2 :input'),
-                    phone:$('.phone input'),
+                    phone:$('.masked'),
                     sent:$('.sent'),
                     sound:$('.sound')
                 },
@@ -128,8 +128,10 @@
                         </div>',
                         text:{
                             //bot's first message
-                            hi:'Добрый день! Я дежурный юрист-консультант. Чем могу помочь? Задайте вопрос и я Вас проконсультирую. Консультация бесплатна',
+                            hi:'Добрый день! Я дежурный юрист',
                             //bot's second message
+                            ask:'Чем я могу Вам помочь? Задайте вопрос и я вам обязательно помогу. Консультация бесплатна',
+                            //bot's third message
                             suggest:'Давайте я Вам перезвоню и проконсультирую. Так будет проще и быстрее'
                         },
                         //header in user's message

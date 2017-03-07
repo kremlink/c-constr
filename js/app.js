@@ -109,7 +109,7 @@
 
    if(mgr.name=='chat')
    {
-    mgr.inserted.wrap=$('<div class="sovinformburo_chat" />').appendTo(props.into);
+    mgr.inserted.wrap=$('<div class="sovinformburo_chat" style="position:absolute;" />').appendTo(props.into);
     mgr.inserted.block=$('<div class="sovinformburo_chat-block" />').appendTo(mgr.inserted.wrap);
     mgr.inserted.iframe=$('<iframe src="'+mgr.data[mgr.name]['bU']+'chat.html?'+param+'" frameborder="0" style="position:absolute;top:-1000px;left:-1000px;display:block;"></iframe>').appendTo(mgr.inserted.block);
 
