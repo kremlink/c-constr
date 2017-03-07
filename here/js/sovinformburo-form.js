@@ -22,9 +22,6 @@ otherJquerySpace = {};
 			if(tduid)
 				data.tduid_=tduid;
 
-			if(data['g-a']&&window.ga)
-			 ga('create',data['g-a'],'auto');
-
 			window.addEventListener("message",function(e){
 				if(e.data&&e.data.sovinformburo&&e.data.type=='form')
 				{
